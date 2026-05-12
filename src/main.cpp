@@ -21,8 +21,8 @@ void setup() {
     Serial.println("Tracer inicializado...");
 
     xTaskCreate(TaskBlink, "Blink", 128, NULL, 2, NULL);
-    xTaskCreate(TaskSensor, "Sensor", 128, NULL, 1, NULL);
-    xTaskCreate(TaskMonitor, "Monitor", 256, NULL, 3, NULL);
+    xTaskCreate(TaskSensor, "Sensor", 128, NULL, 1, &xSensorHandle);
+    xTaskCreate(TaskMonitor, "Monitor", 256, NULL, 4, NULL);
     xTaskCreate(TaskHighPriority, "Heavy", 128, NULL, 3, NULL);
     xTaskCreate(TaskMemoryStress, "Stress", 128, NULL, 1, NULL);
 
@@ -112,22 +112,12 @@ void TaskMemoryStress(void *pvParameters) {
         // 2. Aloca um bloco de 1KB (1024 bytes)
         // Usamos uint8_t para garantir que cada posição seja 1 byte
         uint8_t* dummyBuffer = new uint8_t[1024];
-
         if (dummyBuffer != nullptr) {
-            // Preenche com lixo para garantir que a RAM foi tocada
-            memset(dummyBuffer, 0xAA, 1024);
-            
-            trace_record_ram(); // Registra a queda na RAM livre
-            
-            // Segura a memória por 2 segundos para dar tempo do tracer capturar
-            vTaskDelay(pdMS_TO_TICKS(2000));
-
-            // 3. Libera a memória
+            trace_record_ram(); // <--- Adiciona esta linha aqui para capturar a queda de 1KB
+            vTaskDelay(pdMS_TO_TICKS(1000));
             delete[] dummyBuffer;
-            
-            trace_record_ram(); // Registra a subida da RAM livre
+            trace_record_ram(); // <--- Captura a recuperação da memória
         }
-
         // Espera um pouco antes do próximo ciclo
         vTaskDelay(pdMS_TO_TICKS(1000));
     }

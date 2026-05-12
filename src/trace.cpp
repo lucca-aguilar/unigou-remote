@@ -17,7 +17,10 @@ void trace_init() {
 void trace_record(const char* name, TaskState state) {
     if (traceIndex < MAX_TRACES) {
         if (strcmp(name, lastTask) != 0 || state != lastState) {
-            traceBuffer[traceIndex] = {name, micros(), state};
+            traceBuffer[traceIndex].taskName = name;
+            traceBuffer[traceIndex].timestamp = micros();
+            traceBuffer[traceIndex].value = (uint32_t)state; 
+            traceBuffer[traceIndex].type = TYPE_STATE;       
             traceIndex++;
             lastTask = name;
             lastState = state;

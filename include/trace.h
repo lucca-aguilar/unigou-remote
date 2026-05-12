@@ -22,9 +22,8 @@ enum EventType {
 struct TraceEntry {
     const char* taskName;
     uint32_t timestamp;
-    TaskState state;
-    uint32_t value;
-    uint8_t type;
+    uint32_t value; 
+    EventType type; 
 };
 
 void trace_init();
