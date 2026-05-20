@@ -1,0 +1,4 @@
+{
+    "percepioTraceExporter.overrideGdbPrefixEnabled": false,
+    "percepioTraceExporter.overrideGdbPrefix": ""
+}
