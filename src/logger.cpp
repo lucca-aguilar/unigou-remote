@@ -3,7 +3,7 @@
 #include "logger.h"
 
 QueueHandle_t messages;
-static const int max_messages = 100;
+static const int max_messages = 10;
 static void logging(void* pvParameters);
 
 struct Log {
@@ -14,9 +14,18 @@ struct Log {
 };
 
 void log_init() {
-    Serial.begin(115200);
-    messages = xQueueCreate(max_messages, sizeof(Log));
-    xTaskCreate(logging, "Logger", 256, NULL, 1, NULL);
+messages = xQueueCreate(max_messages, sizeof(Log));
+    if (messages == NULL) {
+        Serial.println("FATAL: queue NULL - heap insuficiente");
+        while(1);
+    }
+    Serial.println("Queue OK");
+
+    if (xTaskCreate(logging, "Logger", 256, NULL, 1, NULL) != pdPASS) {
+        Serial.println("FATAL: logger task failed");
+        while(1);
+    }
+    Serial.println("Logger task OK");
 }
 
 void log_write(Level level, const char* msg) {
@@ -30,6 +39,26 @@ void log_write(Level level, const char* msg) {
     xQueueSend(messages, &log, pdMS_TO_TICKS(10));
 }
 
+void serial_print_guarded(const char* line) {
+    if (xTaskGetSchedulerState() == taskSCHEDULER_RUNNING) {
+        vTaskSuspendAll();
+        Serial.print(line);
+        xTaskResumeAll();
+    } else {
+        Serial.print(line);
+    }
+}
+
+void serial_println_guarded(const char* line) {
+    if (xTaskGetSchedulerState() == taskSCHEDULER_RUNNING) {
+        vTaskSuspendAll();
+        Serial.println(line);
+        xTaskResumeAll();
+    } else {
+        Serial.println(line);
+    }
+}
+
 static void logging(void* pvParameters) {
     static char buffer[256];
     const char* level_names[] = {"DEBUG", "OPERATION", "WARNING", "ERROR"};
@@ -38,7 +67,6 @@ static void logging(void* pvParameters) {
         Log log;
         xQueueReceive(messages, &log, portMAX_DELAY);
         snprintf(buffer, sizeof(buffer), "%lu,%s,%s,%s\n", log.timestamp, log.task, log.message, level_names[log.level]);
+        serial_print_guarded(buffer);
     }
-
-    Serial.print(buffer);
 }

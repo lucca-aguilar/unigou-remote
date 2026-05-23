@@ -13,7 +13,11 @@ static TaskStatus_t task_status[max_tasks];
 static void mem_task(void* pvParameters);
 
 void mem_monitor_init() {
-    xTaskCreate(mem_task, "Memory Monitor", 256, NULL, 1, NULL);
+    if (xTaskCreate(mem_task, "Memory task", 256, NULL, 1, NULL) != pdPASS) {
+        Serial.println("FATAL: memory task failed");
+        while(1);
+    }
+    Serial.println("Memory task OK");
 }
 
 static void mem_task(void* pvParameters) {
@@ -31,6 +35,10 @@ static void mem_task(void* pvParameters) {
         log_write(OPERATION, buf);
 
         UBaseType_t count = uxTaskGetSystemState(task_status, max_tasks, NULL);
+        if (count > max_tasks) {
+            count = max_tasks;
+        }
+
         for (UBaseType_t i = 0; i < count; i++) {
             snprintf(buf, sizeof(buf), "Task %-12s | Stack HWM: %u words",
                 task_status[i].pcTaskName,

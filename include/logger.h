@@ -13,5 +13,7 @@ enum Level {
 
 void log_init();
 void log_write(Level, const char*);
+void serial_print_guarded(const char*);
+void serial_println_guarded(const char*);
 
 #endif

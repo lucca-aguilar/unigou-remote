@@ -2,38 +2,52 @@
 #include <Arduino_FreeRTOS.h>
 #include "logger.h"
 #include "mem_monitor.h"
-#include "runtime_stats.h"
+#include "task_tracer.h"
 
 static void Task1(void* pvParameters);
 static void Task2(void* pvParameters);
 
 void setup() {
+    Serial.begin(115200);
     while (!Serial) {
-        vTaskDelay(pdMS_TO_TICKS(10));
+        delay(10);          // delay() do Arduino, seguro antes do scheduler
     }
 
     log_init();
     mem_monitor_init();
-    runtime_stats_init();
+    tracer_init();
 
     Serial.println("BOOT");
 
-    xTaskCreate(Task1, "Task1", 192, NULL, 2, NULL);
-    xTaskCreate(Task2, "Task2", 192, NULL, 2, NULL);
+    if (xTaskCreate(Task1, "Task1", 192, NULL, 2, NULL) != pdPASS) {
+        Serial.println("FATAL: Task1 create failed");
+        while (1);
+    }
+
+    if (xTaskCreate(Task2, "Task2", 192, NULL, 2, NULL) != pdPASS) {
+        Serial.println("FATAL: Task2 create failed");
+        while (1);
+    }
+
+    vTaskStartScheduler();
 }
 
 void loop() {}
 
 static void Task1(void* pvParameters) {
     while (1) {
-        vTaskDelay(pdMS_TO_TICKS(200));
+        tracer_event("Task1", TASK_RUNNING);
         log_write(OPERATION, "Task1 operating.");
+        tracer_event("Task1", TASK_BLOCKED);
+        vTaskDelay(pdMS_TO_TICKS(200));
     }
 }
 
 static void Task2(void* pvParameters) {
     while (1) {
-        vTaskDelay(pdMS_TO_TICKS(600));
+        tracer_event("Task2", TASK_RUNNING);
         log_write(OPERATION, "Task2 operating.");
+        tracer_event("Task2", TASK_BLOCKED);
+        vTaskDelay(pdMS_TO_TICKS(600));
     }
 }
