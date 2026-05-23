@@ -30,7 +30,7 @@ void tracer_init() {
         Serial.println("FATAL: tracer queue failed");
         while(1);
     }
-    if (xTaskCreate(tracer_task, "Tracer", 256, NULL, 1, NULL) != pdPASS) {
+    if (xTaskCreate(tracer_task, "Tracer", 256, NULL, 3, NULL) != pdPASS) {
         Serial.println("FATAL: tracer task failed");
         while(1);
     }
