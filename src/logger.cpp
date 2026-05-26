@@ -39,26 +39,6 @@ void log_write(Level level, const char* msg) {
     xQueueSend(messages, &log, pdMS_TO_TICKS(10));
 }
 
-void serial_print_guarded(const char* line) {
-    if (xTaskGetSchedulerState() == taskSCHEDULER_RUNNING) {
-        vTaskSuspendAll();
-        Serial.print(line);
-        xTaskResumeAll();
-    } else {
-        Serial.print(line);
-    }
-}
-
-void serial_println_guarded(const char* line) {
-    if (xTaskGetSchedulerState() == taskSCHEDULER_RUNNING) {
-        vTaskSuspendAll();
-        Serial.println(line);
-        xTaskResumeAll();
-    } else {
-        Serial.println(line);
-    }
-}
-
 static void log_task(void* pvParameters) {
     static char buffer[256];
     const char* level_names[] = {"DEBUG", "OPERATION", "WARNING", "ERROR"};
@@ -67,6 +47,6 @@ static void log_task(void* pvParameters) {
         Log log;
         xQueueReceive(messages, &log, portMAX_DELAY);
         snprintf(buffer, sizeof(buffer), "%lu,%s,%s,%s\n", log.timestamp, log.task, log.message, level_names[log.level]);
-        serial_print_guarded(buffer);
+        Serial.println(buffer);
     }
 }

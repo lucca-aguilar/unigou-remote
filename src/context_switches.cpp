@@ -1,9 +1,10 @@
 #include <Arduino.h>
 #include <Arduino_FreeRTOS.h>
+#include <string.h>
 #include "logger.h"
 #include "context_switches.h"
 
-#define SWITCHES_QUEUE_SIZE 100
+#define SWITCHES_QUEUE_SIZE 30
 extern "C" void* pxCurrentTCB;
 static QueueHandle_t switchesQueue;
 static void switches_task(void* pvParameters);
@@ -19,6 +20,10 @@ extern "C" void log_context_switch_out(void) {
     const char* task_name = pcTaskGetName((TaskHandle_t)pxCurrentTCB);
     const unsigned long current_time = micros();
 
+    if(strcmp(task_name, "Switches task") == 0 || strcmp(task_name, "Logger") == 0) {
+        return;
+    }
+
     SwitchEvent event;
     event.task_switch = TASK_OFF;
     strncpy(event.taskName, task_name, configMAX_TASK_NAME_LEN - 1);
@@ -32,6 +37,10 @@ extern "C" void log_context_switch_in(void) {
     TaskHandle_t coming_task = xTaskGetCurrentTaskHandle(); 
     const char* task_name = pcTaskGetName((TaskHandle_t)pxCurrentTCB);
     const unsigned long current_time = micros();
+
+    if(strcmp(task_name, "Switches task") == 0 || strcmp(task_name, "Logger") == 0) {
+        return;
+    }
 
     SwitchEvent event;
     event.task_switch = TASK_ON;
@@ -65,8 +74,6 @@ void context_switches_init() {
 
 static void switches_task(void* pvParameters) {
     SwitchEvent event;
-    serial_println_guarded("=== SWITCHES START ===");
-    serial_println_guarded("timestamp_ms,task,switch");
 
     while (1) {
         if (xQueueReceive(switchesQueue, &event, portMAX_DELAY) == pdPASS) {
@@ -75,7 +82,7 @@ static void switches_task(void* pvParameters) {
                 event.timestamp,
                 event.taskName,
                 switch_to_string(event.task_switch));
-            serial_println_guarded(line);
+            log_write(OPERATION, line);
         }
     }
 }

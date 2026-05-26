@@ -3,11 +3,9 @@
 #include "logger.h"
 #include "task_tracer.h"
 
-#define TRACER_QUEUE_SIZE  100
-#define TRACER_NAME_LEN    configMAX_TASK_NAME_LEN
-
+#define TRACER_QUEUE_SIZE  30
 struct TraceEvent {
-    char      taskName[TRACER_NAME_LEN];
+    char      taskName[configMAX_TASK_NAME_LEN];
     uint32_t  timestamp;
     TaskState state;
 };
@@ -42,15 +40,13 @@ void tracer_event(const char* taskName, TaskState state) {
     TraceEvent event;
     event.timestamp = xTaskGetTickCount();
     event.state     = state;
-    strncpy(event.taskName, taskName, TRACER_NAME_LEN - 1);
-    event.taskName[TRACER_NAME_LEN - 1] = '\0';
+    strncpy(event.taskName, taskName, configMAX_TASK_NAME_LEN - 1);
+    event.taskName[configMAX_TASK_NAME_LEN - 1] = '\0';
     xQueueSend(traceQueue, &event, 0);
 }
 
 static void tracer_task(void* pvParameters) {
     TraceEvent event;
-    serial_println_guarded("=== TRACER START ===");
-    serial_println_guarded("timestamp_ms,task,state");
 
     while (1) {
         if (xQueueReceive(traceQueue, &event, portMAX_DELAY) == pdPASS) {
@@ -59,7 +55,7 @@ static void tracer_task(void* pvParameters) {
                 event.timestamp,
                 event.taskName,
                 state_to_string(event.state));
-            serial_println_guarded(line);
+            log_write(OPERATION, line);
         }
     }
 }

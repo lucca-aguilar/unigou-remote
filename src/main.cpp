@@ -16,9 +16,9 @@ void setup() {
     }
 
     log_init();
-    /*mem_monitor_init();
+    mem_monitor_init();
     tracer_init();
-    runtime_stats_init();*/
+    runtime_stats_init();
     context_switches_init();
 
     Serial.println("BOOT");
