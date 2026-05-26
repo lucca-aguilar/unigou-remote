@@ -3,8 +3,8 @@
 #include "logger.h"
 #include "task_tracer.h"
 
-#define TRACER_QUEUE_SIZE  30
-#define TRACER_NAME_LEN    16
+#define TRACER_QUEUE_SIZE  100
+#define TRACER_NAME_LEN    configMAX_TASK_NAME_LEN
 
 struct TraceEvent {
     char      taskName[TRACER_NAME_LEN];
@@ -30,7 +30,7 @@ void tracer_init() {
         Serial.println("FATAL: tracer queue failed");
         while(1);
     }
-    if (xTaskCreate(tracer_task, "Tracer", 256, NULL, 3, NULL) != pdPASS) {
+    if (xTaskCreate(tracer_task, "Tracer task", 256, NULL, 3, NULL) != pdPASS) {
         Serial.println("FATAL: tracer task failed");
         while(1);
     }
@@ -39,26 +39,26 @@ void tracer_init() {
 
 void tracer_event(const char* taskName, TaskState state) {
     if (traceQueue == NULL) return;
-    TraceEvent ev;
-    ev.timestamp = xTaskGetTickCount();
-    ev.state     = state;
-    strncpy(ev.taskName, taskName, TRACER_NAME_LEN - 1);
-    ev.taskName[TRACER_NAME_LEN - 1] = '\0';
-    xQueueSend(traceQueue, &ev, 0);
+    TraceEvent event;
+    event.timestamp = xTaskGetTickCount();
+    event.state     = state;
+    strncpy(event.taskName, taskName, TRACER_NAME_LEN - 1);
+    event.taskName[TRACER_NAME_LEN - 1] = '\0';
+    xQueueSend(traceQueue, &event, 0);
 }
 
 static void tracer_task(void* pvParameters) {
-    TraceEvent ev;
+    TraceEvent event;
     serial_println_guarded("=== TRACER START ===");
     serial_println_guarded("timestamp_ms,task,state");
 
     while (1) {
-        if (xQueueReceive(traceQueue, &ev, portMAX_DELAY) == pdPASS) {
+        if (xQueueReceive(traceQueue, &event, portMAX_DELAY) == pdPASS) {
             char line[80];
             snprintf(line, sizeof(line), "%lu,%s,%s",
-                ev.timestamp,
-                ev.taskName,
-                state_to_string(ev.state));
+                event.timestamp,
+                event.taskName,
+                state_to_string(event.state));
             serial_println_guarded(line);
         }
     }

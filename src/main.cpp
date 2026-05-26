@@ -4,6 +4,7 @@
 #include "mem_monitor.h"
 #include "task_tracer.h"
 #include "runtime_stats.h"
+#include "context_switches.h"
 
 static void Task1(void* pvParameters);
 static void Task2(void* pvParameters);
@@ -15,18 +16,19 @@ void setup() {
     }
 
     log_init();
-    mem_monitor_init();
+    /*mem_monitor_init();
     tracer_init();
-    runtime_stats_init();
+    runtime_stats_init();*/
+    context_switches_init();
 
     Serial.println("BOOT");
 
-    if (xTaskCreate(Task1, "Task1", 192, NULL, 2, NULL) != pdPASS) {
+    if (xTaskCreate(Task1, "Task1", 100, NULL, 2, NULL) != pdPASS) {
         Serial.println("FATAL: Task1 create failed");
         while (1);
     }
 
-    if (xTaskCreate(Task2, "Task2", 192, NULL, 2, NULL) != pdPASS) {
+    if (xTaskCreate(Task2, "Task2", 100, NULL, 2, NULL) != pdPASS) {
         Serial.println("FATAL: Task2 create failed");
         while (1);
     }
