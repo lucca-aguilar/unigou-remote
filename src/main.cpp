@@ -3,6 +3,7 @@
 #include "logger.h"
 #include "mem_monitor.h"
 #include "task_tracer.h"
+#include "runtime_stats.h"
 
 static void Task1(void* pvParameters);
 static void Task2(void* pvParameters);
@@ -10,12 +11,13 @@ static void Task2(void* pvParameters);
 void setup() {
     Serial.begin(115200);
     while (!Serial) {
-        delay(10);          // delay() do Arduino, seguro antes do scheduler
+        delay(10);          
     }
 
     log_init();
     mem_monitor_init();
     tracer_init();
+    runtime_stats_init();
 
     Serial.println("BOOT");
 
@@ -38,7 +40,7 @@ static void Task1(void* pvParameters) {
     while (1) {
         tracer_event("Task1", TASK_RUNNING);
         log_write(OPERATION, "Task1 operating.");
-        tracer_event("Task1", TASK_BLOCKED);
+        tracer_event("Task1", TASK_READY);
         vTaskDelay(pdMS_TO_TICKS(200));
     }
 }
@@ -47,7 +49,7 @@ static void Task2(void* pvParameters) {
     while (1) {
         tracer_event("Task2", TASK_RUNNING);
         log_write(OPERATION, "Task2 operating.");
-        tracer_event("Task2", TASK_BLOCKED);
+        tracer_event("Task2", TASK_READY);
         vTaskDelay(pdMS_TO_TICKS(600));
     }
 }

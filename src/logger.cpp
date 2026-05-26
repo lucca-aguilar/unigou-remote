@@ -4,7 +4,7 @@
 
 QueueHandle_t messages;
 static const int max_messages = 10;
-static void logging(void* pvParameters);
+static void log_task(void* pvParameters);
 
 struct Log {
     char task[configMAX_TASK_NAME_LEN];
@@ -21,7 +21,7 @@ messages = xQueueCreate(max_messages, sizeof(Log));
     }
     Serial.println("Queue OK");
 
-    if (xTaskCreate(logging, "Logger", 256, NULL, 1, NULL) != pdPASS) {
+    if (xTaskCreate(log_task, "Logger", 256, NULL, 1, NULL) != pdPASS) {
         Serial.println("FATAL: logger task failed");
         while(1);
     }
@@ -59,7 +59,7 @@ void serial_println_guarded(const char* line) {
     }
 }
 
-static void logging(void* pvParameters) {
+static void log_task(void* pvParameters) {
     static char buffer[256];
     const char* level_names[] = {"DEBUG", "OPERATION", "WARNING", "ERROR"};
 
