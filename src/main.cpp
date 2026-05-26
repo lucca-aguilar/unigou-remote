@@ -40,7 +40,7 @@ static void Task1(void* pvParameters) {
     while (1) {
         tracer_event("Task1", TASK_RUNNING);
         log_write(OPERATION, "Task1 operating.");
-        tracer_event("Task1", TASK_READY);
+        tracer_event("Task1", TASK_BLOCKED);
         vTaskDelay(pdMS_TO_TICKS(200));
     }
 }
@@ -49,7 +49,7 @@ static void Task2(void* pvParameters) {
     while (1) {
         tracer_event("Task2", TASK_RUNNING);
         log_write(OPERATION, "Task2 operating.");
-        tracer_event("Task2", TASK_READY);
+        tracer_event("Task2", TASK_BLOCKED);
         vTaskDelay(pdMS_TO_TICKS(600));
     }
 }

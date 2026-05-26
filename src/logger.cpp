@@ -2,7 +2,7 @@
 #include <Arduino_FreeRTOS.h>
 #include "logger.h"
 
-QueueHandle_t messages;
+static QueueHandle_t messages;
 static const int max_messages = 10;
 static void log_task(void* pvParameters);
 
