@@ -1,13 +1,19 @@
 #ifndef TASK_TRACER_H
 #define TASK_TRACER_H
 
-enum TaskState {
-    TASK_RUNNING,
-    TASK_BLOCKED,
-    TASK_READY
-};
+#include <Arduino.h>
 
 void tracer_init();
-void tracer_event(const char* taskName, TaskState state);
+
+// Força o compilador a usar a ligação (linkage) do C
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void tracer_log_from_hook(const char* taskName, int state);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
