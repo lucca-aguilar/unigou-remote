@@ -63,7 +63,8 @@ static void tracer_task(void* pvParameters) {
                 event.taskName,
                 state_to_string(event.state));
             
-            serial_println_guarded(line);
+            // Fallback to Serial.println if guarded helper is unavailable
+            Serial.println(line);
         }
         vTaskDelay(pdMS_TO_TICKS(50));
     }
