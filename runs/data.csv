@@ -1,1027 +1,883 @@
-20945,Task B,BLOCKED
-20945,Logger,RUNNING
-20948,Logger,BLOCKED
-20948,IDLE,RUNNING
-20971,Tracer,READY
-20971,Task A,READY
-20971,Tracer,RUNNING
-20975,Task B,READY
-21004,Task A,A trying to use the Mutex...,OPERATION
-
-21004,Task A,A using the Mutex...,OPERATION
-
-21004,Task B,B trying to use the Mutex...,OPERATION
-
-21004,Tracer,BLOCKED
-21004,Task A,RUNNING
-21004,Logger,READY
-21004,Task A,BLOCKED
-21004,Task B,RUNNING
-21004,Task B,BLOCKED
-21004,Logger,RUNNING
-21017,Logger,BLOCKED
-21017,IDLE,RUNNING
-21054,Tracer,READY
-21054,Task B,READY
-21054,Tracer,RUNNING
-21083,Controller,Controller: suspending B.,WARNING
-
-21098,Memory,RAM: allocated 512 bytes.,OPERATION
-
-21104,Task A,A released Mutex.,OPERATION
-
-21076,Tracer,BLOCKED
-21076,Task B,RUNNING
-21076,Task B,BLOCKED
-21076,IDLE,RUNNING
-21083,Controller,READY
-21083,Controller,RUNNING
-21083,Logger,READY
-21083,Task B,SUSPENDED
-21083,Controller,BLOCKED
-21083,Logger,RUNNING
-21087,Logger,BLOCKED
-21087,IDLE,RUNNING
-21098,Memory,READY
-21098,Memory,RUNNING
-21098,Logger,READY
-21098,Memory,BLOCKED
-21098,Logger,RUNNING
-21102,Logger,BLOCKED
-21102,IDLE,RUNNING
-21104,Task A,READY
-21104,Task A,RUNNING
-21104,Logger,READY
-21104,Task A,BLOCKED
-21104,Logger,RUNNING
-21107,Logger,BLOCKED
-21107,IDLE,RUNNING
-21126,Tracer,READY
-21126,Tracer,RUNNING
-21154,Task A,READY
-21180,Task A,A trying to use the Mutex...,OPERATION
-21180,Task A,A using the Mutex...,OPERATION
-21180,Tracer,BLOCKED
-21180,Task A,RUNNING
-21180,Logger,READY
-21180,Task A,BLOCKED
-21180,Logger,RUNNING
-21189,Logger,BLOCKED
-21189,IDLE,RUNNING
-21230,Tracer,READY
-21230,Tracer,RUNNING
-21280,Task A,A released Mutex.,OPERATION
-
-21246,Tracer,BLOCKED
-21246,IDLE,RUNNING
-21280,Task A,READY
-21280,Task A,RUNNING
-21280,Logger,READY
-21280,Task A,BLOCKED
-21280,Logger,RUNNING
-21283,Logger,BLOCKED
-21283,IDLE,RUNNING
-21296,Tracer,READY
-21296,Tracer,RUNNING
-21330,Task A,A trying to use the Mutex...,OPERATION
-
-21330,Task A,A using the Mutex...,OPERATION
-
-21316,Tracer,BLOCKED
-21316,IDLE,RUNNING
-21330,Task A,READY
-21330,Task A,RUNNING
-21330,Logger,READY
-21330,Task A,BLOCKED
-21330,Logger,RUNNING
-21338,Logger,BLOCKED
-21338,IDLE,RUNNING
-21366,Tracer,READY
-21366,Tracer,RUNNING
-21430,Task A,A released Mutex.,OPERATION
-
-21386,Tracer,BLOCKED
-21386,IDLE,RUNNING
-21430,Task A,READY
-21430,Task A,RUNNING
-21430,Logger,READY
-21430,Task A,BLOCKED
-21430,Logger,RUNNING
-21433,Logger,BLOCKED
-21433,IDLE,RUNNING
-21436,Tracer,READY
-21436,Tracer,RUNNING
-21480,Task A,A trying to use the Mutex...,OPERATION
-
-21480,Task A,A using the Mutex...,OPERATION
-
-21498,Memory,RAM: freed 512 bytes.,OPERATION
-
-21456,Tracer,BLOCKED
-21456,IDLE,RUNNING
-21480,Task A,READY
-21480,Task A,RUNNING
-21480,Logger,READY
-21480,Task A,BLOCKED
-21480,Logger,RUNNING
-21488,Logger,BLOCKED
-21488,IDLE,RUNNING
-21498,Memory,READY
-21498,Memory,RUNNING
-21498,Logger,READY
-21498,Memory,BLOCKED
-21498,Logger,RUNNING
-21502,Logger,BLOCKED
-21502,IDLE,RUNNING
-21506,Tracer,READY
-21506,Tracer,RUNNING
-21580,Task A,A released Mutex.,OPERATION
-
-21539,Tracer,BLOCKED
-21539,IDLE,RUNNING
-21580,Task A,READY
-21580,Task A,RUNNING
-21580,Logger,READY
-21580,Task A,BLOCKED
-21580,Logger,RUNNING
-21583,Logger,BLOCKED
-21583,IDLE,RUNNING
-21589,Tracer,READY
-21589,Tracer,RUNNING
-21630,Task A,A trying to use the Mutex...,OPERATION
-
-21630,Task A,A using the Mutex...,OPERATION
-
-21609,Tracer,BLOCKED
-21609,IDLE,RUNNING
-21630,Task A,READY
-21630,Task A,RUNNING
-21630,Logger,READY
-21630,Task A,BLOCKED
-21630,Logger,RUNNING
-21638,Logger,BLOCKED
-21638,IDLE,RUNNING
-21659,Tracer,READY
-21659,Tracer,RUNNING
-21679,Tracer,BLOCKED
-21679,IDLE,RUNNING
-21729,Tracer,READY
-21729,Tracer,RUNNING
-21730,Task A,READY
-21738,Task A,A released Mutex.,OPERATION
-
-21738,Tracer,BLOCKED
-21738,Task A,RUNNING
-21738,Logger,READY
-21738,Task A,BLOCKED
-21738,Logger,RUNNING
-21741,Logger,BLOCKED
-21741,IDLE,RUNNING
-21788,Tracer,READY
-21788,Task A,READY
-21788,Tracer,RUNNING
-21806,Task A,A trying to use the Mutex...,OPERATION
-
-21806,Task A,A using the Mutex...,OPERATION
-
-21806,Tracer,BLOCKED
-21806,Task A,RUNNING
-21806,Logger,READY
-21806,Task A,BLOCKED
-21806,Logger,RUNNING
-21815,Logger,BLOCKED
-21815,IDLE,RUNNING
-21856,Tracer,READY
-21856,Tracer,RUNNING
-21898,Memory,RAM: allocated 512 bytes.,OPERATION
-
-21906,Task A,A released Mutex.,OPERATION
-
-21872,Tracer,BLOCKED
-21872,IDLE,RUNNING
-21898,Memory,READY
-21898,Memory,RUNNING
-21898,Logger,READY
-21898,Memory,BLOCKED
-21898,Logger,RUNNING
-21902,Logger,BLOCKED
-21902,IDLE,RUNNING
-21906,Task A,READY
-21906,Task A,RUNNING
-21906,Logger,READY
-21906,Task A,BLOCKED
-21906,Logger,RUNNING
-21909,Logger,BLOCKED
-21909,IDLE,RUNNING
-21922,Tracer,READY
-21922,Tracer,RUNNING
-21956,Task A,A trying to use the Mutex...,OPERATION
-
-21956,Task A,A using the Mutex...,OPERATION
-
-21955,Tracer,BLOCKED
-21955,IDLE,RUNNING
-21956,Task A,READY
-21956,Task A,RUNNING
-21956,Logger,READY
-21956,Task A,BLOCKED
-21956,Logger,RUNNING
-21964,Logger,BLOCKED
-21964,IDLE,RUNNING
-22005,Tracer,READY
-22005,Tracer,RUNNING
-22056,Task A,A released Mutex.,OPERATION
-
-22025,Tracer,BLOCKED
-22025,IDLE,RUNNING
-22056,Task A,READY
-22056,Task A,RUNNING
-22056,Logger,READY
-22056,Task A,BLOCKED
-22056,Logger,RUNNING
-22059,Logger,BLOCKED
-22059,IDLE,RUNNING
-22075,Tracer,READY
-22075,Tracer,RUNNING
-22106,Task A,A trying to use the Mutex...,OPERATION
-
-22106,Task A,A using the Mutex...,OPERATION
-
-22095,Tracer,BLOCKED
-22095,IDLE,RUNNING
-22106,Task A,READY
-22106,Task A,RUNNING
-22106,Logger,READY
-22106,Task A,BLOCKED
-22106,Logger,RUNNING
-22114,Logger,BLOCKED
-22114,IDLE,RUNNING
-22145,Tracer,READY
-22145,Tracer,RUNNING
-22206,Task A,A released Mutex.,OPERATION
-
-22165,Tracer,BLOCKED
-22165,IDLE,RUNNING
-22206,Task A,READY
-22206,Task A,RUNNING
-22206,Logger,READY
-22206,Task A,BLOCKED
-22206,Logger,RUNNING
-22209,Logger,BLOCKED
-22209,IDLE,RUNNING
-22215,Tracer,READY
-22215,Tracer,RUNNING
-22256,Task A,A trying to use the Mutex...,OPERATION
-
-22256,Task A,A using the Mutex...,OPERATION
-
-22235,Tracer,BLOCKED
-22235,IDLE,RUNNING
-22256,Task A,READY
-22256,Task A,RUNNING
-22256,Logger,READY
-22256,Task A,BLOCKED
-22256,Logger,RUNNING
-22264,Logger,BLOCKED
-22264,IDLE,RUNNING
-22285,Tracer,READY
-22285,Tracer,RUNNING
-22298,Memory,READY
-22306,Memory,RAM: freed 512 bytes.,OPERATION
-
-22306,Tracer,BLOCKED
-22306,Memory,RUNNING
-22306,Logger,READY
-22306,Memory,BLOCKED
-22306,Logger,RUNNING
-22311,Logger,BLOCKED
-22311,IDLE,RUNNING
-22356,Task A,READY
-22356,Tracer,READY
-22356,Tracer,RUNNING
-22374,Task A,A released Mutex.,OPERATION
-
-22374,Tracer,BLOCKED
-22374,Task A,RUNNING
-22374,Logger,READY
-22374,Task A,BLOCKED
-22374,Logger,RUNNING
-22378,Logger,BLOCKED
-22378,IDLE,RUNNING
-22424,Tracer,READY
-22424,Task A,READY
-22424,Tracer,RUNNING
-22442,Task A,A trying to use the Mutex...,OPERATION
-
-22442,Task A,A using the Mutex...,OPERATION
-
-22442,Tracer,BLOCKED
-22442,Task A,RUNNING
-22442,Logger,READY
-22442,Task A,BLOCKED
-22442,Logger,RUNNING
-22451,Logger,BLOCKED
-22451,IDLE,RUNNING
-22492,Tracer,READY
-22492,Tracer,RUNNING
-22542,Task A,A released Mutex.,OPERATION
-
-22508,Tracer,BLOCKED
-22508,IDLE,RUNNING
-22542,Task A,READY
-22542,Task A,RUNNING
-22542,Logger,READY
-22542,Task A,BLOCKED
-22542,Logger,RUNNING
-22545,Logger,BLOCKED
-22545,IDLE,RUNNING
-22558,Tracer,READY
-22558,Tracer,RUNNING
-22592,Task A,A trying to use the Mutex...,OPERATION
-
-22592,Task A,A using the Mutex...,OPERATION
-
-22578,Tracer,BLOCKED
-22578,IDLE,RUNNING
-22592,Task A,READY
-22592,Task A,RUNNING
-22592,Logger,READY
-22592,Task A,BLOCKED
-22592,Logger,RUNNING
-22600,Logger,BLOCKED
-22600,IDLE,RUNNING
-22628,Tracer,READY
-22628,Tracer,RUNNING
-22692,Task A,A released Mutex.,OPERATION
-
-22648,Tracer,BLOCKED
-22648,IDLE,RUNNING
-22692,Task A,READY
-22692,Task A,RUNNING
-22692,Logger,READY
-22692,Task A,BLOCKED
-22692,Logger,RUNNING
-22695,Logger,BLOCKED
-22695,IDLE,RUNNING
-22698,Tracer,READY
-22698,Tracer,RUNNING
-22706,Memory,READY
-22719,Memory,RAM: allocated 512 bytes.,OPERATION
-
-22742,Task A,A trying to use the Mutex...,OPERATION
-
-22742,Task A,A using the Mutex...,OPERATION
-
-22719,Tracer,BLOCKED
-22719,Memory,RUNNING
-22719,Logger,READY
-22719,Memory,BLOCKED
-22719,Logger,RUNNING
-22724,Logger,BLOCKED
-22724,IDLE,RUNNING
-22742,Task A,READY
-22742,Task A,RUNNING
-22742,Logger,READY
-22742,Task A,BLOCKED
-22742,Logger,RUNNING
-22750,Logger,BLOCKED
-22750,IDLE,RUNNING
-22769,Tracer,READY
-22769,Tracer,RUNNING
-22842,Task A,A released Mutex.,OPERATION
-
-22798,Tracer,BLOCKED
-22798,IDLE,RUNNING
-22842,Task A,READY
-22842,Task A,RUNNING
-22842,Logger,READY
-22842,Task A,BLOCKED
-22842,Logger,RUNNING
-22845,Logger,BLOCKED
-22845,IDLE,RUNNING
-22848,Tracer,READY
-22848,Tracer,RUNNING
-22892,Task A,A trying to use the Mutex...,OPERATION
-
-22892,Task A,A using the Mutex...,OPERATION
-
-22868,Tracer,BLOCKED
-22868,IDLE,RUNNING
-22892,Task A,READY
-22892,Task A,RUNNING
-22892,Logger,READY
-22892,Task A,BLOCKED
-22892,Logger,RUNNING
-22900,Logger,BLOCKED
-22900,IDLE,RUNNING
-22918,Tracer,READY
-22918,Tracer,RUNNING
-22938,Tracer,BLOCKED
-22938,IDLE,RUNNING
-22988,Tracer,READY
-22988,Tracer,RUNNING
-22992,Task A,READY
-22997,Task A,A released Mutex.,OPERATION
-
-22997,Tracer,BLOCKED
-22997,Task A,RUNNING
-22997,Logger,READY
-22997,Task A,BLOCKED
-22997,Logger,RUNNING
-23000,Logger,BLOCKED
-23000,IDLE,RUNNING
-23047,Tracer,READY
-23047,Task A,READY
-23047,Tracer,RUNNING
-23065,Task A,A trying to use the Mutex...,OPERATION
-
-23065,Task A,A using the Mutex...,OPERATION
-
-23065,Tracer,BLOCKED
-23065,Task A,RUNNING
-23065,Logger,READY
-23065,Task A,BLOCKED
-23065,Logger,RUNNING
-23074,Logger,BLOCKED
-23074,IDLE,RUNNING
-23115,Tracer,READY
-23115,Tracer,RUNNING
-23119,Memory,READY
-23133,Memory,RAM: freed 512 bytes.,OPERATION
-
-23165,Task A,A released Mutex.,OPERATION
-
-23133,Tracer,BLOCKED
-23133,Memory,RUNNING
-23133,Logger,READY
-23133,Memory,BLOCKED
-23133,Logger,RUNNING
-23137,Logger,BLOCKED
-23137,IDLE,RUNNING
-23165,Task A,READY
-23165,Task A,RUNNING
-23165,Logger,READY
-23165,Task A,BLOCKED
-23165,Logger,RUNNING
-23168,Logger,BLOCKED
-23168,IDLE,RUNNING
-23183,Tracer,READY
-23183,Tracer,RUNNING
-23215,Task A,A trying to use the Mutex...,OPERATION
-
-23215,Task A,A using the Mutex...,OPERATION
-
-23212,Tracer,BLOCKED
-23212,IDLE,RUNNING
-23215,Task A,READY
-23215,Task A,RUNNING
-23215,Logger,READY
-23215,Task A,BLOCKED
-23215,Logger,RUNNING
-23223,Logger,BLOCKED
-23223,IDLE,RUNNING
-23262,Tracer,READY
-23262,Tracer,RUNNING
-23315,Task A,A released Mutex.,OPERATION
-
-23282,Tracer,BLOCKED
-23282,IDLE,RUNNING
-23315,Task A,READY
-23315,Task A,RUNNING
-23315,Logger,READY
-23315,Task A,BLOCKED
-23315,Logger,RUNNING
-23318,Logger,BLOCKED
-23318,IDLE,RUNNING
-23332,Tracer,READY
-23332,Tracer,RUNNING
-23365,Task A,A trying to use the Mutex...,OPERATION
-
-23365,Task A,A using the Mutex...,OPERATION
-
-23352,Tracer,BLOCKED
-23352,IDLE,RUNNING
-23365,Task A,READY
-23365,Task A,RUNNING
-23365,Logger,READY
-23365,Task A,BLOCKED
-23365,Logger,RUNNING
-23373,Logger,BLOCKED
-23373,IDLE,RUNNING
-23402,Tracer,READY
-23402,Tracer,RUNNING
-23465,Task A,A released Mutex.,OPERATION
-
-23422,Tracer,BLOCKED
-23422,IDLE,RUNNING
-23465,Task A,READY
-23465,Task A,RUNNING
-23465,Logger,READY
-23465,Task A,BLOCKED
-23465,Logger,RUNNING
-23468,Logger,BLOCKED
-23468,IDLE,RUNNING
-23472,Tracer,READY
-23472,Tracer,RUNNING
-23515,Task A,A trying to use the Mutex...,OPERATION
-
-23515,Task A,A using the Mutex...,OPERATION
-
-23533,Memory,RAM: allocated 512 bytes.,OPERATION
-
-23492,Tracer,BLOCKED
-23492,IDLE,RUNNING
-23515,Task A,READY
-23515,Task A,RUNNING
-23515,Logger,READY
-23515,Task A,BLOCKED
-23515,Logger,RUNNING
-23523,Logger,BLOCKED
-23523,IDLE,RUNNING
-23533,Memory,READY
-23533,Memory,RUNNING
-23533,Logger,READY
-23533,Memory,BLOCKED
-23533,Logger,RUNNING
-23537,Logger,BLOCKED
-23537,IDLE,RUNNING
-23542,Tracer,READY
-23542,Tracer,RUNNING
-23615,Task A,A released Mutex.,OPERATION
-
-23575,Tracer,BLOCKED
-23575,IDLE,RUNNING
-23615,Task A,READY
-23615,Task A,RUNNING
-23615,Logger,READY
-23615,Task A,BLOCKED
-23615,Logger,RUNNING
-23618,Logger,BLOCKED
-23618,IDLE,RUNNING
-23625,Tracer,READY
-23625,Tracer,RUNNING
-23665,Task A,A trying to use the Mutex...,OPERATION
-
-23665,Task A,A using the Mutex...,OPERATION
-
-23645,Tracer,BLOCKED
-23645,IDLE,RUNNING
-23665,Task A,READY
-23665,Task A,RUNNING
-23665,Logger,READY
-23665,Task A,BLOCKED
-23665,Logger,RUNNING
-23673,Logger,BLOCKED
-23673,IDLE,RUNNING
-23695,Tracer,READY
-23695,Tracer,RUNNING
-23715,Tracer,BLOCKED
-23715,IDLE,RUNNING
-23765,Task A,READY
-23765,Tracer,READY
-23765,Tracer,RUNNING
-23774,Task A,A released Mutex.,OPERATION
-
-23774,Tracer,BLOCKED
-23774,Task A,RUNNING
-23774,Logger,READY
-23774,Task A,BLOCKED
-23774,Logger,RUNNING
-23777,Logger,BLOCKED
-23777,IDLE,RUNNING
-23824,Tracer,READY
-23824,Task A,READY
-23824,Tracer,RUNNING
-23842,Task A,A trying to use the Mutex...,OPERATION
-
-23842,Task A,A using the Mutex...,OPERATION
-
-23842,Tracer,BLOCKED
-23842,Task A,RUNNING
-23842,Logger,READY
-23842,Task A,BLOCKED
-23842,Logger,RUNNING
-23851,Logger,BLOCKED
-23851,IDLE,RUNNING
-23892,Tracer,READY
-23892,Tracer,RUNNING
-23933,Memory,RAM: freed 512 bytes.,OPERATION
-
-23942,Task A,A released Mutex.,OPERATION
-
-23908,Tracer,BLOCKED
-23908,IDLE,RUNNING
-23933,Memory,READY
-23933,Memory,RUNNING
-23933,Logger,READY
-23933,Memory,BLOCKED
-23933,Logger,RUNNING
-23937,Logger,BLOCKED
-23937,IDLE,RUNNING
-23942,Task A,READY
-23942,Task A,RUNNING
-23942,Logger,READY
-23942,Task A,BLOCKED
-23942,Logger,RUNNING
-23945,Logger,BLOCKED
-23945,IDLE,RUNNING
-23958,Tracer,READY
-23958,Tracer,RUNNING
-23992,Task A,A trying to use the Mutex...,OPERATION
-
-23992,Task A,A using the Mutex...,OPERATION
-
-23991,Tracer,BLOCKED
-23991,IDLE,RUNNING
-23992,Task A,READY
-23992,Task A,RUNNING
-23992,Logger,READY
-23992,Task A,BLOCKED
-23992,Logger,RUNNING
-24000,Logger,BLOCKED
-24000,IDLE,RUNNING
-24041,Tracer,READY
-24041,Tracer,RUNNING
-24083,Controller,Controller: resuming B.,OPERATION
-
-24083,Task B,B trying to use the Mutex...,OPERATION
-
-24092,Task A,A released Mutex.,OPERATION
-
-24092,Task B,B using the Mutex...,OPERATION
-
-24061,Tracer,BLOCKED
-24061,IDLE,RUNNING
-24083,Controller,READY
-24083,Controller,RUNNING
-24083,Logger,READY
-24083,Task B,READY
-24083,Controller,BLOCKED
-24083,Task B,RUNNING
-24083,Task B,BLOCKED
-24083,Logger,RUNNING
-24092,Task A,READY
-24092,Task A,RUNNING
-24092,Task B,READY
-24092,Task A,BLOCKED
-24092,Task B,RUNNING
-24092,Task B,BLOCKED
-24092,Logger,RUNNING
-24100,Logger,BLOCKED
-24100,IDLE,RUNNING
-24111,Tracer,READY
-24111,Tracer,RUNNING
-24142,Task A,READY
-24152,Task A,A trying to use the Mutex...,OPERATION
-
-24152,Tracer,BLOCKED
-24152,Task A,RUNNING
-24152,Logger,READY
-24152,Task A,BLOCKED
-24152,Logger,RUNNING
-24157,Logger,BLOCKED
-24157,IDLE,RUNNING
-24202,Tracer,READY
-24202,Task A,READY
-24202,Tracer,RUNNING
-24220,Task A,A timed out waiting for Mutex.,WARNING
-
-24242,Task B,B released Mutex.,OPERATION
-
-24220,Tracer,BLOCKED
-24220,Task A,RUNNING
-24220,Logger,READY
-24220,Task A,BLOCKED
-24220,Logger,RUNNING
-24225,Logger,BLOCKED
-24225,IDLE,RUNNING
-24242,Task B,READY
-24242,Task B,RUNNING
-24242,Logger,READY
-24242,Task B,BLOCKED
-24242,Logger,RUNNING
-24245,Logger,BLOCKED
-24245,IDLE,RUNNING
-24270,Tracer,READY
-24270,Task A,READY
-24270,Tracer,RUNNING
-24272,Task B,READY
-24303,Task A,A trying to use the Mutex...,OPERATION
-
-24303,Task A,A using the Mutex...,OPERATION
-
-24303,Task B,B trying to use the Mutex...,OPERATION
-
-24333,Memory,RAM: allocated 512 bytes.,OPERATION
-
-24303,Tracer,BLOCKED
-24303,Task A,RUNNING
-24303,Logger,READY
-24303,Task A,BLOCKED
-24303,Task B,RUNNING
-24303,Task B,BLOCKED
-24303,Logger,RUNNING
-24316,Logger,BLOCKED
-24316,IDLE,RUNNING
-24333,Memory,READY
-24333,Memory,RUNNING
-24333,Logger,READY
-24333,Memory,BLOCKED
-24333,Logger,RUNNING
-24337,Logger,BLOCKED
-24337,IDLE,RUNNING
-24353,Tracer,READY
-24353,Task B,READY
-24353,Tracer,RUNNING
-24403,Task A,A released Mutex.,OPERATION
-
-24418,Task B,B trying to use the Mutex...,OPERATION
-
-24418,Task B,B using the Mutex...,OPERATION
-
-24388,Tracer,BLOCKED
-24388,Task B,RUNNING
-24388,Task B,BLOCKED
-24388,IDLE,RUNNING
-24403,Task A,READY
-24403,Task A,RUNNING
-24403,Logger,READY
-24403,Task A,BLOCKED
-24403,Logger,RUNNING
-24406,Logger,BLOCKED
-24406,IDLE,RUNNING
-24418,Task B,READY
-24418,Task B,RUNNING
-24418,Logger,READY
-24418,Task B,BLOCKED
-24418,Logger,RUNNING
-24426,Logger,BLOCKED
-24426,IDLE,RUNNING
-24438,Tracer,READY
-24438,Tracer,RUNNING
-24453,Task A,READY
-24476,Task A,A trying to use the Mutex...,OPERATION
-
-24476,Tracer,BLOCKED
-24476,Task A,RUNNING
-24476,Logger,READY
-24476,Task A,BLOCKED
-24476,Logger,RUNNING
-24481,Logger,BLOCKED
-24481,IDLE,RUNNING
-24526,Tracer,READY
-24526,Task A,READY
-24526,Tracer,RUNNING
-24544,Task A,A timed out waiting for Mutex.,WARNING
-
-24568,Task B,B released Mutex.,OPERATION
-
-24544,Tracer,BLOCKED
-24544,Task A,RUNNING
-24544,Logger,READY
-24544,Task A,BLOCKED
-24544,Logger,RUNNING
-24549,Logger,BLOCKED
-24549,IDLE,RUNNING
-24568,Task B,READY
-24568,Task B,RUNNING
-24568,Logger,READY
-24568,Task B,BLOCKED
-24568,Logger,RUNNING
-24571,Logger,BLOCKED
-24571,IDLE,RUNNING
-24594,Tracer,READY
-24594,Task A,READY
-24594,Tracer,RUNNING
-24598,Task B,READY
-24627,Task A,A trying to use the Mutex...,OPERATION
-
-24627,Task A,A using the Mutex...,OPERATION
-
-24627,Task B,B trying to use the Mutex...,OPERATION
-
-24627,Tracer,BLOCKED
-24627,Task A,RUNNING
-24627,Logger,READY
-24627,Task A,BLOCKED
-24627,Task B,RUNNING
-24627,Task B,BLOCKED
-24627,Logger,RUNNING
-24640,Logger,BLOCKED
-24640,IDLE,RUNNING
-24677,Tracer,READY
-24677,Task B,READY
-24677,Tracer,RUNNING
-24727,Task A,A released Mutex.,OPERATION
-
-24729,Task B,B trying to use the Mutex...,OPERATION
-
-24729,Task B,B using the Mutex...,OPERATION
-
-24739,Memory,RAM: freed 512 bytes.,OPERATION
-
-24699,Tracer,BLOCKED
-24699,Task B,RUNNING
-24699,Task B,BLOCKED
-24699,IDLE,RUNNING
-24727,Task A,READY
-24727,Task A,RUNNING
-24727,Logger,READY
-24727,Task A,BLOCKED
-24727,Logger,RUNNING
-24729,Task B,READY
-24729,Task B,RUNNING
-24729,Task B,BLOCKED
-24729,Logger,RUNNING
-24733,Memory,READY
-24739,Logger,BLOCKED
-24739,Memory,RUNNING
-24739,Logger,READY
-24739,Memory,BLOCKED
-24739,Logger,RUNNING
-24743,Logger,BLOCKED
-24743,IDLE,RUNNING
-24749,Tracer,READY
-24749,Tracer,RUNNING
-24777,Task A,READY
-24793,Task A,A trying to use the Mutex...,OPERATION
-
-24793,Tracer,BLOCKED
-24793,Task A,RUNNING
-24793,Logger,READY
-24793,Task A,BLOCKED
-24793,Logger,RUNNING
-24798,Logger,BLOCKED
-24798,IDLE,RUNNING
-24843,Tracer,READY
-24843,Task A,READY
-24843,Tracer,RUNNING
-24861,Task A,A timed out waiting for Mutex.,WARNING
-
-24879,Task B,B released Mutex.,OPERATION
-
-24909,Task B,B trying24861,Tracer,BLOCKED
-24861,Task A,RUNNING
-24861,Logger,READY
-24861,Task A,BLOCKED
-24861,Logger,RUNNING
-24866,Logger,BLOCKED
-24866,IDLE,RUNNING
-24879,Task B,READY
-24879,Task B,RUNNING
-24879,Logger,READY
-24879,Task B,BLOCKED
-24879,Logger,RUNNING
-24882,Logger,BLOCKED
-24882,IDLE,RUNNING
-24909,Task B,READY
-24909,Task B,RUNNING
-24909,Logger,READY
-24909,Task B,BLOCKED
-24909,Logger,RUNNING
-24911,Tracer,READY
-24911,Task A,READY
-24911,Tracer,RUNNING
-to use the Mutex...,OPERATION
-
-24909,Task B,B using the Mutex...,OPERATION
-
-24951,Task A,A trying to use the Mutex...,OPERATION
-
-24951,Tracer,BLOCKED
-24951,Task A,RUNNING
-24951,Task A,BLOCKED
-24951,Logger,RUNNING
-24963,Logger,BLOCKED
-24963,IDLE,RUNNING
-25001,Tracer,READY
-25001,Task A,READY
-25001,Tracer,RUNNING
-25017,Task A,A timed out waiting for Mutex.,WARNING
-
-25059,Task B,B released Mutex.,OPERATION
-
-25017,Tracer,BLOCKED
-25017,Task A,RUNNING
-25017,Logger,READY
-25017,Task A,BLOCKED
-25017,Logger,RUNNING
-25022,Logger,BLOCKED
-25022,IDLE,RUNNING
-25059,Task B,READY
-25059,Task B,RUNNING
-25059,Logger,READY
-25059,Task B,BLOCKED
-25059,Logger,RUNNING
-25062,Logger,BLOCKED
-25062,IDLE,RUNNING
-25067,Tracer,READY
-25067,Task A,READY
-25067,Tracer,RUNNING
-25089,Task B,READY
-25100,Task A,A trying to use the Mutex...,OPERATION
-
-25100,Task A,A using the Mutex...,OPERATION
-
-25100,Task B,B trying to use the Mutex...,OPERATION
-
-25139,Memory,RAM: allocated 512 bytes.,OPERATION
-
-25100,Tracer,BLOCKED
-25100,Task A,RUNNING
-25100,Logger,READY
-25100,Task A,BLOCKED
-25100,Task B,RUNNING
-25100,Task B,BLOCKED
-25100,Logger,RUNNING
-25113,Logger,BLOCKED
-25113,IDLE,RUNNING
-25139,Memory,READY
-25139,Memory,RUNNING
-25139,Logger,READY
-25139,Memory,BLOCKED
-25139,Logger,RUNNING
-25143,Logger,BLOCKED
-25143,IDLE,RUNNING
-25150,Tracer,READY
-25150,Task B,READY
-25150,Tracer,RUNNING
-25200,Task A,A released Mutex.,OPERATION
-
-25215,Task B,B trying to use the Mutex...,OPERATION
-
-25215,Task B,B using the Mutex...,OPERATION
-
-25185,Tracer,BLOCKED
-25185,Task B,RUNNING
-25185,Task B,BLOCKED
-25185,IDLE,RUNNING
-25200,Task A,READY
-25200,Task A,RUNNING
-25200,Logger,READY
-25200,Task A,BLOCKED
-25200,Logger,RUNNING
-25203,Logger,BLOCKED
-25203,IDLE,RUNNING
-25215,Task B,READY
-25215,Task B,RUNNING
-25215,Logger,READY
-25215,Task B,BLOCKED
-25215,Logger,RUNNING
-25223,Logger,BLOCKED
-25223,IDLE,RUNNING
-25235,Tracer,READY
-25235,Tracer,RUNNING
-25250,Task A,READY
-25273,Task A,A trying to use the Mutex...,OPERATION
-
-25273,Tracer,BLOCKED
-25273,Task A,RUNNING
-25273,Logger,READY
-25273,Task A,BLOCKED
-25273,Logger,RUNNING
-25278,Logger,BLOCKED
-25278,IDLE,RUNNING
-25323,Tracer,READY
-25323,Task A,READY
-25323,Tracer,RUNNING
-25341,Task A,A timed out waiting for Mutex.,WARNING
-
-25365,Task B,B released Mutex.,OPERATION
-
-25341,Tracer,BLOCKED
-25341,Task A,RUNNING
-25341,Logger,READY
-25341,Task A,BLOCKED
-25341,Logger,RUNNING
-25346,Logger,BLOCKED
-25346,IDLE,RUNNING
-25365,Task B,READY
-25365,Task B,RUNNING
-25365,Logger,READY
-25365,Task B,BLOCKED
-25365,Logger,RUNNING
-25368,Logger,BLOCKED
-25368,IDLE,RUNNING
-25391,Tracer,READY
-25391,Task A,READY
-25391,Tracer,RUNNING
-25395,Task B,READY
-25424,Task A,A trying to use the Mutex...,OPERATION
-
-25424,Task A,A using the Mutex...,OPERATION
-
-25424,Task B,B trying to use the Mutex...,OPERATION
-
-25424,Tracer,BLOCKED
-25424,Task A,RUNNING
-25424,Logger,READY
-25424,Task A,BLOCKED
-25424,Task B,RUNNING
-25424,Task B,BLOCKED
-25424,Logger,RUNNING
-25437,Logger,BLOCKED
-25437,IDLE,RUNNING
-25474,Tracer,READY
-25474,Task B,READY
-25474,Tracer,RUNNING
+1810,Task B,B released Mutex.,OPERATION
+
+1810,Task A,A using the Mutex...,OPERATION
+
+1817,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+1818,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+1818,Memory task,Task Logger       | Stack HWM: 110 words,OPERATION
+
+1818,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+1818,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+1818,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+1819,Memory task,Task Controller   | Stack HWM: 97 words,OPERATION
+
+1819,Memory task,Task Task B       | Stack HWM: 88 words,OPERATION
+
+1819,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+1840,Task B,B trying to use the Mutex...,OPERATION
+
+1910,Task A,A released Mutex.,OPERATION
+
+1920,Task B,B trying to use the Mutex...,OPERATION
+
+1920,Task B,B using the Mutex...,OPERATION
+
+1960,Task A,A trying to use the Mutex...,OPERATION
+
+2010,Task A,A timed out waiting for Mutex.,WARNING
+
+2014,Memory,RAM: freed 512 bytes.,OPERATION
+
+2014,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+2015,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+2015,Memory task,Task Logger       | Stack HWM: 110 words,OPERATION
+
+2015,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+2015,Memory task,Task Task B       | Stack HWM: 88 words,OPERATION
+
+2015,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+2016,Memory task,Task Controller   | Stack HWM: 97 words,OPERATION
+
+2016,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+2016,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+2060,Task A,A trying to use the Mutex...,OPERATION
+
+2070,Task B,B released Mutex.,OPERATION
+
+2070,Task A,A using the Mutex...,OPERATION
+
+2100,Task B,B trying to use the Mutex...,OPERATION
+
+2170,Task A,A released Mutex.,OPERATION
+
+2180,Task B,B trying to use the Mutex...,OPERATION
+
+2180,Task B,B using the Mutex...,OPERATION
+
+2212,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+2212,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+2212,Memory task,Task Logger       | Stack HWM: 104 words,OPERATION
+
+2212,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+2213,Memory task,Task Task B       | Stack HWM: 88 words,OPERATION
+
+2213,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+2213,Memory task,Task Controller   | Stack HWM: 97 words,OPERATION
+
+2213,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+2213,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+2220,Task A,A trying to use the Mutex...,OPERATION
+
+2270,Task A,A timed out waiting for Mutex.,WARNING
+
+2320,Task A,A trying to use the Mutex...,OPERATION
+
+2330,Task B,B released Mutex.,OPERATION
+
+2330,Task A,A using the Mutex...,OPERATION
+
+2360,Task B,B trying to use the Mutex...,OPERATION
+
+2412,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+2412,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+2412,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+2412,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+2413,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+2413,Memory task,Task Task B       | Stack HWM: 88 words,OPERATION
+
+2413,Memory task,Task Controller   | Stack HWM: 97 words,OPERATION
+
+2413,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+2413,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+2430,Task A,A released Mutex.,OPERATION
+
+2430,Memory,RAM: allocated 512 bytes.,OPERATION
+
+2440,Task B,B trying to use the Mutex...,OPERATION
+
+2440,Task B,B using the Mutex...,OPERATION
+
+2480,Task A,A trying to use the Mutex...,OPERATION
+
+2530,Task A,A timed out waiting for Mutex.,WARNING
+
+2580,Task A,A trying to use the Mutex...,OPERATION
+
+2590,Task B,B released Mutex.,OPERATION
+
+2590,Task A,A using the Mutex...,OPERATION
+
+2612,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+2612,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+2612,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+2612,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+2613,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+2613,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+2613,Memory task,Task Controller   | Stack HWM: 97 words,OPERATION
+
+2613,Memory task,Task Task B       | Stack HWM: 86 words,OPERATION
+
+2613,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+2620,Task B,B trying to use the Mutex...,OPERATION
+
+2690,Task A,A released Mutex.,OPERATION
+
+2700,Task B,B trying to use the Mutex...,OPERATION
+
+2700,Task B,B using the Mutex...,OPERATION
+
+2740,Task A,A trying to use the Mutex...,OPERATION
+
+2790,Task A,A timed out waiting for Mutex.,WARNING
+
+2812,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+2812,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+2812,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+2812,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+2812,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+2813,Memory task,Task Task B       | Stack HWM: 80 words,OPERATION
+
+2813,Memory task,Task Controller   | Stack HWM: 97 words,OPERATION
+
+2813,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+2813,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+2840,Task A,A trying to use the Mutex...,OPERATION
+
+2840,Memory,RAM: freed 512 bytes.,OPERATION
+
+2850,Task B,B released Mutex.,OPERATION
+
+2850,Task A,A using the Mutex...,OPERATION
+
+2880,Task B,B trying to use the Mutex...,OPERATION
+
+2950,Task A,A released Mutex.,OPERATION
+
+2960,Task B,B trying to use the Mutex...,OPERATION
+
+2960,Task B,B using the Mutex...,OPERATION
+
+3000,Controller,Controller: suspending B.,WARNING
+
+3000,Task A,A trying to use the Mutex...,OPERATION
+
+3012,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+3012,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+3012,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+3012,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+3012,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+3013,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+3013,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+3013,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+3013,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+3050,Task A,A timed out waiting for Mutex.,WARNING
+
+3100,Task A,A trying to use the Mutex...,OPERATION
+
+3150,Task A,A timed out waiting for Mutex.,WARNING
+
+3200,Task A,A trying to use the Mutex...,OPERATION
+
+3212,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+3212,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+3212,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+3212,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+3212,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+3213,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+3213,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+3213,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+3213,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+3250,Task A,A timed out waiting for Mutex.,WARNING
+
+3250,Memory,RAM: allocated 512 bytes.,OPERATION
+
+3300,Task A,A trying to use the Mutex...,OPERATION
+
+3350,Task A,A timed out waiting for Mutex.,WARNING
+
+3400,Task A,A trying to use the Mutex...,OPERATION
+
+3412,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+3412,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+3412,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+3412,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+3412,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+3413,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+3413,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+3413,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+3413,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+3450,Task A,A timed out waiting for Mutex.,WARNING
+
+3500,Task A,A trying to use the Mutex...,OPERATION
+
+3550,Task A,A timed out waiting for Mutex.,WARNING
+
+3600,Task A,A trying to use the Mutex...,OPERATION
+
+3612,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+3612,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+3612,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+3612,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+3612,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+3613,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+3613,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+3613,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+3613,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+3650,Task A,A timed out waiting for Mutex.,WARNING
+
+3650,Memory,RAM: freed 512 bytes.,OPERATION
+
+3700,Task A,A trying to use the Mutex...,OPERATION
+
+3750,Task A,A timed out waiting for Mutex.,WARNING
+
+3800,Task A,A trying to use the Mutex...,OPERATION
+
+3812,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+3812,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+3812,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+3812,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+3812,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+3813,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+3813,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+3813,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+3813,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+3850,Task A,A timed out waiting for Mutex.,WARNING
+
+3900,Task A,A trying to use the Mutex...,OPERATION
+
+3950,Task A,A timed out waiting for Mutex.,WARNING
+
+4000,Task A,A trying to use the Mutex...,OPERATION
+
+4012,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+4012,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+4012,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+4012,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+4012,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+4013,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+4013,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+4013,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+4013,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+4050,Task A,A timed out waiting for Mutex.,WARNING
+
+4050,Memory,RAM: allocated 512 bytes.,OPERATION
+
+4100,Task A,A trying to use the Mutex...,OPERATION
+
+4150,Task A,A timed out waiting for Mutex.,WARNING
+
+4200,Task A,A trying to use the Mutex...,OPERATION
+
+4212,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+4212,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+4212,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+4212,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+4212,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+4213,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+4213,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+4213,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+4213,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+4250,Task A,A timed out waiting for Mutex.,WARNING
+
+4300,Task A,A trying to use the Mutex...,OPERATION
+
+4350,Task A,A timed out waiting for Mutex.,WARNING
+
+4400,Task A,A trying to use the Mutex...,OPERATION
+
+4412,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+4412,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+4412,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+4412,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+4412,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+4413,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+4413,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+4413,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+4413,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+4450,Task A,A timed out waiting for Mutex.,WARNING
+
+4450,Memory,RAM: freed 512 bytes.,OPERATION
+
+4500,Task A,A trying to use the Mutex...,OPERATION
+
+4550,Task A,A timed out waiting for Mutex.,WARNING
+
+4600,Task A,A trying to use the Mutex...,OPERATION
+
+4612,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+4612,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+4612,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+4612,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+4612,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+4613,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+4613,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+4613,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+4613,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+4650,Task A,A timed out waiting for Mutex.,WARNING
+
+4700,Task A,A trying to use the Mutex...,OPERATION
+
+4750,Task A,A timed out waiting for Mutex.,WARNING
+
+4800,Task A,A trying to use the Mutex...,OPERATION
+
+4812,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+4812,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+4812,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+4812,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+4812,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+4813,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+4813,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+4813,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+4813,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+4850,Task A,A timed out waiting for Mutex.,WARNING
+
+4850,Memory,RAM: allocated 512 bytes.,OPERATION
+
+4900,Task A,A trying to use the Mutex...,OPERATION
+
+4950,Task A,A timed out waiting for Mutex.,WARNING
+
+5000,Task A,A trying to use the Mutex...,OPERATION
+
+5012,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+5012,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+5012,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+5012,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+5012,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+5013,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+5013,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+5013,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+5013,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+5050,Task A,A timed out waiting for Mutex.,WARNING
+
+5100,Task A,A trying to use the Mutex...,OPERATION
+
+5150,Task A,A timed out waiting for Mutex.,WARNING
+
+5200,Task A,A trying to use the Mutex...,OPERATION
+
+5212,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+5212,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+5212,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+5212,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+5212,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+5213,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+5213,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+5213,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+5213,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+5250,Task A,A timed out waiting for Mutex.,WARNING
+
+5250,Memory,RAM: freed 512 bytes.,OPERATION
+
+5300,Task A,A trying to use the Mutex...,OPERATION
+
+5350,Task A,A timed out waiting for Mutex.,WARNING
+
+5400,Task A,A trying to use the Mutex...,OPERATION
+
+5412,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+5412,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+5412,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+5412,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+5412,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+5413,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+5413,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+5413,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+5413,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+5450,Task A,A timed out waiting for Mutex.,WARNING
+
+5500,Task A,A trying to use the Mutex...,OPERATION
+
+5550,Task A,A timed out waiting for Mutex.,WARNING
+
+5600,Task A,A trying to use the Mutex...,OPERATION
+
+5612,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+5612,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+5612,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+5612,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+5612,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+5613,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+5613,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+5613,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+5613,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+5650,Task A,A timed out waiting for Mutex.,WARNING
+
+5650,Memory,RAM: allocated 512 bytes.,OPERATION
+
+5700,Task A,A trying to use the Mutex...,OPERATION
+
+5750,Task A,A timed out waiting for Mutex.,WARNING
+
+5800,Task A,A trying to use the Mutex...,OPERATION
+
+5812,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+5812,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+5812,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+5812,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+5812,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+5813,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+5813,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+5813,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+5813,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+5850,Task A,A timed out waiting for Mutex.,WARNING
+
+5900,Task A,A trying to use the Mutex...,OPERATION
+
+5950,Task A,A timed out waiting for Mutex.,WARNING
+
+6000,Controller,Controller: resuming B.,OPERATION
+
+6000,Task A,A trying to use the Mutex...,OPERATION
+
+6000,Task B,B released Mutex.,OPERATION
+
+6000,Task A,A using the Mutex...,OPERATION
+
+6017,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+6017,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+6017,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+6017,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+6018,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+6018,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+6018,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+6018,Memory task,Task Task B       | Stack HWM: 74 words,OPERATION
+
+6018,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+6030,Task B,B trying to use the Mutex...,OPERATION
+
+6077,Memory,RAM: freed 512 bytes.,OPERATION
+
+6100,Task A,A released Mutex.,OPERATION
+
+6110,Task B,B trying to use the Mutex...,OPERATION
+
+6110,Task B,B using the Mutex...,OPERATION
+
+6150,Task A,A trying to use the Mutex...,OPERATION
+
+6200,Task A,A timed out waiting for Mutex.,WARNING
+
+6212,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+6212,Memory task,Task Memory task  | Stack HWM: 124 words,OPERATION
+
+6212,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+6212,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+6212,Memory task,Task Task B       | Stack HWM: 68 words,OPERATION
+
+6213,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+6213,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+6213,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+6213,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+6250,Task A,A trying to use the Mutex...,OPERATION
+
+6260,Task B,B released Mutex.,OPERATION
+
+6260,Task A,A using the Mutex...,OPERATION
+
+6290,Task B,B trying to use the Mutex...,OPERATION
+
+6360,Task A,A released Mutex.,OPERATION
+
+6370,Task B,B trying to use the Mutex...,OPERATION
+
+6370,Task B,B using the Mutex...,OPERATION
+
+6410,Task A,A trying to use the Mutex...,OPERATION
+
+6414,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+6415,Memory task,Task Memory task  | Stack HWM: 118 words,OPERATION
+
+6415,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+6415,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+6415,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+6415,Memory task,Task Task B       | Stack HWM: 68 words,OPERATION
+
+6415,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+6416,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+6416,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+6460,Task A,A timed out waiting for Mutex.,WARNING
+
+6477,Memory,RAM: allocated 512 bytes.,OPERATION
+
+6510,Task A,A trying to use the Mutex...,OPERATION
+
+6520,Task B,B released Mutex.,OPERATION
+
+6520,Task A,A using the Mutex...,OPERATION
+
+6550,Task B,B trying to use the Mutex...,OPERATION
+
+6612,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+6612,Memory task,Task Memory task  | Stack HWM: 118 words,OPERATION
+
+6612,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+6612,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+6612,Memory task,Task Task B       | Stack HWM: 68 words,OPERATION
+
+6613,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+6613,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+6613,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+6613,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+6620,Task A,A released Mutex.,OPERATION
+
+6630,Task B,B trying to use the Mutex...,OPERATION
+
+6630,Task B,B using the Mutex...,OPERATION
+
+6670,Task A,A trying to use the Mutex...,OPERATION
+
+6720,Task A,A timed out waiting for Mutex.,WARNING
+
+6770,Task A,A trying to use the Mutex...,OPERATION
+
+6780,Task B,B released Mutex.,OPERATION
+
+6780,Task A,A using the Mutex...,OPERATION
+
+6810,Task B,B trying to use the Mutex...,OPERATION
+
+6814,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+6815,Memory task,Task Memory task  | Stack HWM: 118 words,OPERATION
+
+6815,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+6815,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+6815,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+6815,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+6815,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+6816,Memory task,Task Task B       | Stack HWM: 68 words,OPERATION
+
+6816,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+6877,Memory,RAM: freed 512 bytes.,OPERATION
+
+6880,Task A,A released Mutex.,OPERATION
+
+6890,Task B,B trying to use the Mutex...,OPERATION
+
+6890,Task B,B using the Mutex...,OPERATION
+
+6930,Task A,A trying to use the Mutex...,OPERATION
+
+6980,Task A,A timed out waiting for Mutex.,WARNING
+
+7012,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+7012,Memory task,Task Memory task  | Stack HWM: 118 words,OPERATION
+
+7012,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+7012,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+7012,Memory task,Task Task B       | Stack HWM: 68 words,OPERATION
+
+7013,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+7013,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+7013,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+7013,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+7030,Task A,A trying to use the Mutex...,OPERATION
+
+7040,Task B,B released Mutex.,OPERATION
+
+7040,Task A,A using the Mutex...,OPERATION
+
+7070,Task B,B trying to use the Mutex...,OPERATION
+
+7140,Task A,A released Mutex.,OPERATION
+
+7150,Task B,B trying to use the Mutex...,OPERATION
+
+7150,Task B,B using the Mutex...,OPERATION
+
+7190,Task A,A trying to use the Mutex...,OPERATION
+
+7212,Memory task,Free: 4216 B | Min ever: 3696 B,OPERATION
+
+7212,Memory task,Task Memory task  | Stack HWM: 118 words,OPERATION
+
+7212,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+7212,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+7212,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+7213,Memory task,Task Task B       | Stack HWM: 68 words,OPERATION
+
+7213,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+7213,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+7213,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+7240,Task A,A timed out waiting for Mutex.,WARNING
+
+7277,Memory,RAM: allocated 512 bytes.,OPERATION
+
+7290,Task A,A trying to use the Mutex...,OPERATION
+
+7300,Task B,B released Mutex.,OPERATION
+
+7300,Task A,A using the Mutex...,OPERATION
+
+7330,Task B,B trying to use the Mutex...,OPERATION
+
+7400,Task A,A released Mutex.,OPERATION
+
+7410,Task B,B trying to use the Mutex...,OPERATION
+
+7410,Task B,B using the Mutex...,OPERATION
+
+7418,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+7419,Memory task,Task Memory task  | Stack HWM: 118 words,OPERATION
+
+7419,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+7419,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+7419,Memory task,Task Task B       | Stack HWM: 68 words,OPERATION
+
+7419,Memory task,Task Memory       | Stack HWM: 88 words,OPERATION
+
+7419,Memory task,Task Controller   | Stack HWM: 62 words,OPERATION
+
+7420,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION
+
+7420,Memory task,Task Tmr Svc      | Stack HWM: 99 words,OPERATION
+
+7450,Task A,A trying to use the Mutex...,OPERATION
+
+7500,Task A,A timed out waiting for Mutex.,WARNING
+
+7550,Task A,A trying to use the Mutex...,OPERATION
+
+7560,Task B,B released Mutex.,OPERATION
+
+7560,Task A,A using the Mutex...,OPERATION
+
+7590,Task B,B trying to use the Mutex...,OPERATION
+
+7612,Memory task,Free: 3696 B | Min ever: 3696 B,OPERATION
+
+7612,Memory task,Task Memory task  | Stack HWM: 118 words,OPERATION
+
+7612,Memory task,Task Logger       | Stack HWM: 102 words,OPERATION
+
+7612,Memory task,Task IDLE         | Stack HWM: 99 words,OPERATION
+
+7612,Memory task,Task Task A       | Stack HWM: 88 words,OPERATION

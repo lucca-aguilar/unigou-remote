@@ -22,8 +22,8 @@ void setup() {
     while (!Serial) { delay(10); }
     
     log_init();
-    // mem_monitor_init();
-    tracer_init();
+    mem_monitor_init();
+    // tracer_init();
     // runtime_stats_init();
     
     Serial.println("BOOT");
@@ -40,6 +40,7 @@ void setup() {
     }
     
     vTaskStartScheduler();
+
 }
 
 void loop() {}
@@ -57,17 +58,37 @@ static void TaskA(void* pvParameters) {
         }
         vTaskDelay(pdMS_TO_TICKS(50));
     }
+    
+}
+
+static void consume_stack(int depth) {
+    volatile uint32_t dummy_data[4]; 
+    dummy_data[0] = depth; 
+    if (depth > 0) {
+        consume_stack(depth - 1); 
+    }
 }
 
 static void TaskB(void* pvParameters) {
+    int work_complexity = 0; 
+
     while (1) {
         log_write(OPERATION, "B trying to use the Mutex...");
+        
         if (xSemaphoreTake(xResourceMutex, pdMS_TO_TICKS(50)) == pdTRUE) {
             log_write(OPERATION, "B using the Mutex...");
+
+            consume_stack(work_complexity);
+
+            if (work_complexity < 12) {
+                work_complexity++;
+            }
+            
             vTaskDelay(pdMS_TO_TICKS(150)); 
             xSemaphoreGive(xResourceMutex);
             log_write(OPERATION, "B released Mutex.");
         }
+        
         vTaskDelay(pdMS_TO_TICKS(30));
     }
 }

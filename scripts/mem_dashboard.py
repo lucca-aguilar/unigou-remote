@@ -116,9 +116,4 @@ else:
             )
             st.plotly_chart(fig_stack, use_container_width=True)
             
-            # Tabela resumida com o pior caso de cada tarefa (menor valor de HWM registrado)
-            st.subheader("⚠️ Alerta de Proximidade de Estouro")
-            piores_casos = df_stack.groupby("Task")["Stack HWM (Words)"].min().reset_index()
-            st.dataframe(piores_casos.style.highlight_min(color="#ff9999", subset=["Stack HWM (Words)"]), use_container_width=True)
-        else:
-            st.info("Sem dados de Stack para exibir.")
+        
