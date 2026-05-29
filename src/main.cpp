@@ -22,8 +22,8 @@ void setup() {
     while (!Serial) { delay(10); }
     
     log_init();
-    mem_monitor_init();
-    // tracer_init();
+    // mem_monitor_init();
+    tracer_init();
     // runtime_stats_init();
     
     Serial.println("BOOT");

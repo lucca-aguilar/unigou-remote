@@ -1,6 +1,10 @@
+/**
+ * @file runtime_stats.cpp
+ * @brief Implementation of the CPU runtime statistics tracking subsystem.
+ */
+
 #include <Arduino.h>
 #include <Arduino_FreeRTOS.h>
-#include "logger.h"
 #include "runtime_stats.h"
 
 static char stats_buffer[2048];
@@ -18,14 +22,19 @@ extern "C" uint32_t runtime_stats_timer_get_value() {
 }
 
 void runtime_stats_init() {
-     if (xTaskCreate(runtime_stats_task, "Runtime stats", 256, NULL, 1, NULL) != pdPASS) {
+    if (xTaskCreate(runtime_stats_task, "Runtime stats", 256, NULL, 1, NULL) != pdPASS) {
         Serial.println("FATAL: Runtime stats task failed");
-        while(1);
+        while(1); 
     }
     Serial.println("Runtime stats task OK");
 }
 
-static void runtime_stats_task(void* pvParameters) {
+/**
+ * @brief Periodic FreeRTOS task that prints task CPU usage execution time. Wakes up strictly every 5000ms using `vTaskDelayUntil`. It zeroes out the tracking buffer, invokes the heavy kernel metrics collector, and flushes the resulting string table out to the hardware Serial port.
+ */
+void runtime_stats_task(void* pvParameters) {
+    (void)pvParameters; 
+    
     TickType_t LastWakeTime = xTaskGetTickCount();
     
     while(1) {
@@ -36,10 +45,9 @@ static void runtime_stats_task(void* pvParameters) {
         Serial.println("\n=================================");
         Serial.println("        CPU USAGE STATISTICS       ");
         Serial.println("=================================");
-        
+
         vTaskGetRunTimeStats(stats_buffer);
+
         Serial.print(stats_buffer);
     }
 }
-
-
