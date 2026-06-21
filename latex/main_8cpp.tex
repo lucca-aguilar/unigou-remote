@@ -1,0 +1,248 @@
+\doxysection{src/\+main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \+\#include $<$Arduino\+\_\+\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \+\#include "{}logger.\+h"{}}\newline
+{\ttfamily \+\#include "{}mem\+\_\+monitor.\+h"{}}\newline
+{\ttfamily \+\#include "{}task\+\_\+tracer.\+h"{}}\newline
+{\ttfamily \+\#include "{}runtime\+\_\+stats.\+h"{}}\newline
+Include dependency graph for main.\+cpp:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{main_8cpp_af9877767f734190a66ec73e03252e1ce}{PRIORITY\+\_\+\+LOW}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{main_8cpp_a6faa07fa7e63d4f0a8a4a26523d9f7ae}{PRIORITY\+\_\+\+MED}}~2
+\item 
+\+\#define \doxymbox{\hyperlink{main_8cpp_aaca04d3893d808496a90f8f0d0b8fcaa}{PRIORITY\+\_\+\+HIGH}}~3
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{main_8cpp_a982165c2b78e29573fa7b08785fa916e}{TaskA}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\item 
+static void \doxymbox{\hyperlink{main_8cpp_a4384e6b3c4cf3bcc7245d43c3108f26b}{TaskB}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\item 
+static void \doxymbox{\hyperlink{main_8cpp_aecf87bb07ef1b6679595b0f875fe5f0e}{Task\+Memory}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\item 
+static void \doxymbox{\hyperlink{main_8cpp_ac79a744c1eabac757eec6f63e96ea84e}{Task\+Controller}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\item 
+void \doxymbox{\hyperlink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \doxymbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\item 
+static void \doxymbox{\hyperlink{main_8cpp_a2d4c02eea6b93796c1eabb763d05bd17}{consume\+\_\+stack}} (int depth)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Semaphore\+Handle\+\_\+t \doxymbox{\hyperlink{main_8cpp_a1ecb46414fc2793090c54ff0db4b98f5}{x\+Resource\+Mutex}}
+\item 
+Task\+Handle\+\_\+t \doxymbox{\hyperlink{main_8cpp_a8d94b363594b395feb281a969e1705ed}{x\+Target\+Task\+Handle}} = NULL
+\end{DoxyCompactItemize}
+
+
+\label{main_8cpp_doc-define-members}
+\Hypertarget{main_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{main_8cpp_aaca04d3893d808496a90f8f0d0b8fcaa}\index{main.cpp@{main.cpp}!PRIORITY\_HIGH@{PRIORITY\_HIGH}}
+\index{PRIORITY\_HIGH@{PRIORITY\_HIGH}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{PRIORITY\_HIGH}{PRIORITY\_HIGH}}
+{\footnotesize\ttfamily \label{main_8cpp_aaca04d3893d808496a90f8f0d0b8fcaa} 
+\+\#define PRIORITY\+\_\+\+HIGH~3}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{main_8cpp_af9877767f734190a66ec73e03252e1ce}\index{main.cpp@{main.cpp}!PRIORITY\_LOW@{PRIORITY\_LOW}}
+\index{PRIORITY\_LOW@{PRIORITY\_LOW}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{PRIORITY\_LOW}{PRIORITY\_LOW}}
+{\footnotesize\ttfamily \label{main_8cpp_af9877767f734190a66ec73e03252e1ce} 
+\+\#define PRIORITY\+\_\+\+LOW~1}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00008}{8}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{main_8cpp_a6faa07fa7e63d4f0a8a4a26523d9f7ae}\index{main.cpp@{main.cpp}!PRIORITY\_MED@{PRIORITY\_MED}}
+\index{PRIORITY\_MED@{PRIORITY\_MED}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{PRIORITY\_MED}{PRIORITY\_MED}}
+{\footnotesize\ttfamily \label{main_8cpp_a6faa07fa7e63d4f0a8a4a26523d9f7ae} 
+\+\#define PRIORITY\+\_\+\+MED~2}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00009}{9}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+
+
+\label{main_8cpp_doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a2d4c02eea6b93796c1eabb763d05bd17}\index{main.cpp@{main.cpp}!consume\_stack@{consume\_stack}}
+\index{consume\_stack@{consume\_stack}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{consume\_stack()}{consume\_stack()}}
+{\footnotesize\ttfamily \label{main_8cpp_a2d4c02eea6b93796c1eabb763d05bd17} 
+void consume\+\_\+stack (\begin{DoxyParamCaption}\item[{int}]{depth}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00064}{64}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00064}{consume\+\_\+stack()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00064}{consume\+\_\+stack()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00072}{Task\+B()}}.
+
+\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\index{main.cpp@{main.cpp}!loop@{loop}}
+\index{loop@{loop}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{main_8cpp_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00046}{46}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\index{main.cpp@{main.cpp}!setup@{setup}}
+\index{setup@{setup}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00024}{log\+\_\+init()}}, \doxymbox{\hyperlink{main_8cpp_source_l00010}{PRIORITY\+\_\+\+HIGH}}, \doxymbox{\hyperlink{main_8cpp_source_l00008}{PRIORITY\+\_\+\+LOW}}, \doxymbox{\hyperlink{main_8cpp_source_l00009}{PRIORITY\+\_\+\+MED}}, \doxymbox{\hyperlink{main_8cpp_source_l00048}{Task\+A()}}, \doxymbox{\hyperlink{main_8cpp_source_l00072}{Task\+B()}}, \doxymbox{\hyperlink{main_8cpp_source_l00117}{Task\+Controller()}}, \doxymbox{\hyperlink{main_8cpp_source_l00096}{Task\+Memory()}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00045}{tracer\+\_\+init()}}, \doxymbox{\hyperlink{main_8cpp_source_l00012}{x\+Resource\+Mutex}}, and \doxymbox{\hyperlink{main_8cpp_source_l00013}{x\+Target\+Task\+Handle}}.
+
+\Hypertarget{main_8cpp_a982165c2b78e29573fa7b08785fa916e}\index{main.cpp@{main.cpp}!TaskA@{TaskA}}
+\index{TaskA@{TaskA}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TaskA()}{TaskA()}}
+{\footnotesize\ttfamily \label{main_8cpp_a982165c2b78e29573fa7b08785fa916e} 
+void TaskA (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00048}{48}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}, \doxymbox{\hyperlink{logger_8h_source_l00020}{OPERATION}}, \doxymbox{\hyperlink{logger_8h_source_l00021}{WARNING}}, and \doxymbox{\hyperlink{main_8cpp_source_l00012}{x\+Resource\+Mutex}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{main_8cpp_a4384e6b3c4cf3bcc7245d43c3108f26b}\index{main.cpp@{main.cpp}!TaskB@{TaskB}}
+\index{TaskB@{TaskB}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TaskB()}{TaskB()}}
+{\footnotesize\ttfamily \label{main_8cpp_a4384e6b3c4cf3bcc7245d43c3108f26b} 
+void TaskB (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00072}{72}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00064}{consume\+\_\+stack()}}, \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}, \doxymbox{\hyperlink{logger_8h_source_l00020}{OPERATION}}, and \doxymbox{\hyperlink{main_8cpp_source_l00012}{x\+Resource\+Mutex}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{main_8cpp_ac79a744c1eabac757eec6f63e96ea84e}\index{main.cpp@{main.cpp}!TaskController@{TaskController}}
+\index{TaskController@{TaskController}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TaskController()}{TaskController()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac79a744c1eabac757eec6f63e96ea84e} 
+void Task\+Controller (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00117}{117}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}, \doxymbox{\hyperlink{logger_8h_source_l00020}{OPERATION}}, \doxymbox{\hyperlink{logger_8h_source_l00021}{WARNING}}, and \doxymbox{\hyperlink{main_8cpp_source_l00013}{x\+Target\+Task\+Handle}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{main_8cpp_aecf87bb07ef1b6679595b0f875fe5f0e}\index{main.cpp@{main.cpp}!TaskMemory@{TaskMemory}}
+\index{TaskMemory@{TaskMemory}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TaskMemory()}{TaskMemory()}}
+{\footnotesize\ttfamily \label{main_8cpp_aecf87bb07ef1b6679595b0f875fe5f0e} 
+void Task\+Memory (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00096}{96}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8h_source_l00022}{ERROR}}, \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}, and \doxymbox{\hyperlink{logger_8h_source_l00020}{OPERATION}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+
+
+\label{main_8cpp_doc-var-members}
+\Hypertarget{main_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_a1ecb46414fc2793090c54ff0db4b98f5}\index{main.cpp@{main.cpp}!xResourceMutex@{xResourceMutex}}
+\index{xResourceMutex@{xResourceMutex}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{xResourceMutex}{xResourceMutex}}
+{\footnotesize\ttfamily \label{main_8cpp_a1ecb46414fc2793090c54ff0db4b98f5} 
+Semaphore\+Handle\+\_\+t x\+Resource\+Mutex}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00012}{12}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}, \doxymbox{\hyperlink{main_8cpp_source_l00048}{Task\+A()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00072}{Task\+B()}}.
+
+\Hypertarget{main_8cpp_a8d94b363594b395feb281a969e1705ed}\index{main.cpp@{main.cpp}!xTargetTaskHandle@{xTargetTaskHandle}}
+\index{xTargetTaskHandle@{xTargetTaskHandle}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{xTargetTaskHandle}{xTargetTaskHandle}}
+{\footnotesize\ttfamily \label{main_8cpp_a8d94b363594b395feb281a969e1705ed} 
+Task\+Handle\+\_\+t x\+Target\+Task\+Handle = NULL}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00117}{Task\+Controller()}}.
+

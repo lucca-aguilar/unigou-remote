@@ -1,0 +1,9 @@
+<map id="src/logger.cpp" name="src/logger.cpp">
+<area shape="rect" id="Node000001" title="Implementation of the asynchronous logger module using FreeRTOS." alt="" coords="126,5,230,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,82,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,34,82,75,79,70,152,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="106,80,251,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,31,180,66,176,63,176,34"/>
+<area shape="rect" id="Node000004" href="$logger_8h.html" title="Asynchronous logging system based on queues and dedicated tasks. This module manages the creation,..." alt="" coords="275,80,342,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="202,30,275,72,270,72,200,35"/>
+</map>

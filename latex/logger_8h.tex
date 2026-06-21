@@ -1,0 +1,178 @@
+\doxysection{include/\+logger.h File Reference}
+\hypertarget{logger_8h}{}\label{logger_8h}\index{include/logger.h@{include/logger.h}}
+
+
+Asynchronous logging system based on queues and dedicated tasks. This module manages the creation, queuing, and processing of system logs in a non-\/blocking manner for the main tasks.  
+
+
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{logger_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{logger_8h_a2d987f07078d9f7dec7944ed60a0b358}{MAX\+\_\+\+LOG\+\_\+\+MSG\+\_\+\+LEN}}~100
+\begin{DoxyCompactList}\small\item\em Defines the maximum length of log messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}} \{ \doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a0593585da9181e972974c1274d8f2b4f}{DEBUG}}
+, \doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5ae6c7d41b255eff353251fbec6fe839e4}{OPERATION}}
+, \doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a984de77c680eaff141ec910e25568a81}{WARNING}}
+, \doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a2fd6f336d08340583bd620a7f5694c90}{ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Levels of log severity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{logger_8h_a958e8ba8f7300649c3f12c77a228f28e}{log\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the log queue and the log processing task. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{logger_8h_a7613da80511a0ee83d3114176f4ac59c}{log\+\_\+write}} (\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}}, const char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Creates a log with required fields and sends it to the log queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Asynchronous logging system based on queues and dedicated tasks. This module manages the creation, queuing, and processing of system logs in a non-\/blocking manner for the main tasks. 
+
+
+
+Definition in file \doxymbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+\label{logger_8h_doc-define-members}
+\Hypertarget{logger_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{logger_8h_a2d987f07078d9f7dec7944ed60a0b358}\index{logger.h@{logger.h}!MAX\_LOG\_MSG\_LEN@{MAX\_LOG\_MSG\_LEN}}
+\index{MAX\_LOG\_MSG\_LEN@{MAX\_LOG\_MSG\_LEN}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_LOG\_MSG\_LEN}{MAX\_LOG\_MSG\_LEN}}
+{\footnotesize\ttfamily \label{logger_8h_a2d987f07078d9f7dec7944ed60a0b358} 
+\+\#define MAX\+\_\+\+LOG\+\_\+\+MSG\+\_\+\+LEN~100}
+
+
+
+Defines the maximum length of log messages. 
+
+
+
+Definition at line \doxymbox{\hyperlink{logger_8h_source_l00012}{12}} of file \doxymbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}.
+
+
+
+\label{logger_8h_doc-enum-members}
+\Hypertarget{logger_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}\index{logger.h@{logger.h}!Level@{Level}}
+\index{Level@{Level}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{Level}{Level}}
+{\footnotesize\ttfamily \label{logger_8h_a221b779e6bb7b8d40677d7642bfefac5} 
+enum \doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}}}
+
+
+
+Levels of log severity. 
+
+\begin{DoxyNote}{Note}
+It does not affect the order in which the logs are printed. 
+\end{DoxyNote}
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEBUG@{DEBUG}!logger.h@{logger.h}}
+\index{logger.h@{logger.h}!DEBUG@{DEBUG}}
+}\Hypertarget{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a0593585da9181e972974c1274d8f2b4f}\label{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a0593585da9181e972974c1274d8f2b4f} 
+DEBUG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERATION@{OPERATION}!logger.h@{logger.h}}
+\index{logger.h@{logger.h}!OPERATION@{OPERATION}}
+}\Hypertarget{logger_8h_a221b779e6bb7b8d40677d7642bfefac5ae6c7d41b255eff353251fbec6fe839e4}\label{logger_8h_a221b779e6bb7b8d40677d7642bfefac5ae6c7d41b255eff353251fbec6fe839e4} 
+OPERATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING@{WARNING}!logger.h@{logger.h}}
+\index{logger.h@{logger.h}!WARNING@{WARNING}}
+}\Hypertarget{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a984de77c680eaff141ec910e25568a81}\label{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a984de77c680eaff141ec910e25568a81} 
+WARNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR@{ERROR}!logger.h@{logger.h}}
+\index{logger.h@{logger.h}!ERROR@{ERROR}}
+}\Hypertarget{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a2fd6f336d08340583bd620a7f5694c90}\label{logger_8h_a221b779e6bb7b8d40677d7642bfefac5a2fd6f336d08340583bd620a7f5694c90} 
+ERROR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{logger_8h_source_l00018}{18}} of file \doxymbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+\label{logger_8h_doc-func-members}
+\Hypertarget{logger_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{logger_8h_a958e8ba8f7300649c3f12c77a228f28e}\index{logger.h@{logger.h}!log\_init@{log\_init}}
+\index{log\_init@{log\_init}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{log\_init()}{log\_init()}}
+{\footnotesize\ttfamily \label{logger_8h_a958e8ba8f7300649c3f12c77a228f28e} 
+void log\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the log queue and the log processing task. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and before any call to {\ttfamily \doxylink{logger_8h_a7613da80511a0ee83d3114176f4ac59c}{log\+\_\+write()}}. If there is a failure in allocating memory for the log queue or in creating the task for processing the logs, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{logger_8cpp_source_l00024}{24}} of file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00053}{log\+\_\+task()}}, \doxymbox{\hyperlink{logger_8cpp_source_l00010}{logs}}, and \doxymbox{\hyperlink{logger_8cpp_source_l00011}{max\+\_\+logs}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{logger_8h_a7613da80511a0ee83d3114176f4ac59c}\index{logger.h@{logger.h}!log\_write@{log\_write}}
+\index{log\_write@{log\_write}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{log\_write()}{log\_write()}}
+{\footnotesize\ttfamily \label{logger_8h_a7613da80511a0ee83d3114176f4ac59c} 
+void log\+\_\+write (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}}}]{level}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{msg}{}\end{DoxyParamCaption})}
+
+
+
+Creates a log with required fields and sends it to the log queue. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em level} & Severity of the log. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em message} & String containing message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The \doxylink{logger_8h_a958e8ba8f7300649c3f12c77a228f28e}{log\+\_\+init()} function should have been executed successfully. 
+\end{DoxyPrecond}
+
+
+Definition at line \doxymbox{\hyperlink{logger_8cpp_source_l00039}{39}} of file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00021}{Log::\+level}}, \doxymbox{\hyperlink{logger_8cpp_source_l00010}{logs}}, \doxymbox{\hyperlink{logger_8h_source_l00012}{MAX\+\_\+\+LOG\+\_\+\+MSG\+\_\+\+LEN}}, \doxymbox{\hyperlink{logger_8cpp_source_l00019}{Log::\+message}}, \doxymbox{\hyperlink{logger_8cpp_source_l00018}{Log::\+task}}, and \doxymbox{\hyperlink{logger_8cpp_source_l00020}{Log::\+timestamp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}, \doxymbox{\hyperlink{main_8cpp_source_l00048}{Task\+A()}}, \doxymbox{\hyperlink{main_8cpp_source_l00072}{Task\+B()}}, \doxymbox{\hyperlink{main_8cpp_source_l00117}{Task\+Controller()}}, \doxymbox{\hyperlink{main_8cpp_source_l00096}{Task\+Memory()}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+

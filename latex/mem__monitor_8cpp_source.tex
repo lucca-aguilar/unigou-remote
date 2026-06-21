@@ -1,0 +1,57 @@
+\doxysection{mem\+\_\+monitor.\+cpp}
+\hypertarget{mem__monitor_8cpp_source}{}\label{mem__monitor_8cpp_source}\index{src/mem\_monitor.cpp@{src/mem\_monitor.cpp}}
+\doxymbox{\hyperlink{mem__monitor_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <Arduino\_FreeRTOS.h>}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{logger_8h}{logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mem__monitor_8h}{mem\_monitor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00011}\doxymbox{\hyperlink{mem__monitor_8cpp_a8012574ad4e212aa981ab796b649dbde}{00011}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ TickType\_t\ \doxymbox{\hyperlink{mem__monitor_8cpp_a8012574ad4e212aa981ab796b649dbde}{sampling\_time}}\ =\ pdMS\_TO\_TICKS(200);}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00012}\doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{00012}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\_tasks}}\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00014}\doxymbox{\hyperlink{mem__monitor_8cpp_ab76ba8eb2698fe188c569930a3a57fdb}{00014}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{mem__monitor_8cpp_ab76ba8eb2698fe188c569930a3a57fdb}{free\_heap}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00015}\doxymbox{\hyperlink{mem__monitor_8cpp_ad37a23247d7d0609fd7705461c5e3aab}{00015}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{mem__monitor_8cpp_ad37a23247d7d0609fd7705461c5e3aab}{minimum\_heap}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00016}\doxymbox{\hyperlink{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2}{00016}}\ \textcolor{keyword}{static}\ TaskStatus\_t\ \doxymbox{\hyperlink{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2}{task\_status}}[\doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\_tasks}}];}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00018}00018\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mem__monitor_8cpp_ab16fd5752850b04f280739525d9bc7f4}{mem\_task}}(\textcolor{keywordtype}{void}*\ pvParameters);}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00020}\doxymbox{\hyperlink{mem__monitor_8h_a4bcdb5e9066131ef59990c9f27be14e3}{00020}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mem__monitor_8cpp_a4bcdb5e9066131ef59990c9f27be14e3}{mem\_monitor\_init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (xTaskCreate(\doxymbox{\hyperlink{mem__monitor_8cpp_ab16fd5752850b04f280739525d9bc7f4}{mem\_task}},\ \textcolor{stringliteral}{"{}Memory"{}},\ 256,\ NULL,\ 1,\ NULL)\ !=\ pdPASS)\ \{}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}FATAL:\ memory\ task\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(1);}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00025}00025\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Memory\ task\ OK"{}});}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00031}\doxymbox{\hyperlink{mem__monitor_8cpp_ab16fd5752850b04f280739525d9bc7f4}{00031}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mem__monitor_8cpp_ab16fd5752850b04f280739525d9bc7f4}{mem\_task}}(\textcolor{keywordtype}{void}*\ pvParameters)\ \{}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00032}00032\ \ \ \ \ TickType\_t\ xLastWakeTime\ =\ xTaskGetTickCount();}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[80];}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ vTaskDelayUntil(\&xLastWakeTime,\ \doxymbox{\hyperlink{mem__monitor_8cpp_a8012574ad4e212aa981ab796b649dbde}{sampling\_time}});}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{mem__monitor_8cpp_ab76ba8eb2698fe188c569930a3a57fdb}{free\_heap}}\ \ \ \ =\ xPortGetFreeHeapSize();}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{mem__monitor_8cpp_ad37a23247d7d0609fd7705461c5e3aab}{minimum\_heap}}\ =\ xPortGetMinimumEverFreeHeapSize();}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}Free:\ \%u\ B\ |\ Min\ ever:\ \%u\ B"{}},}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keywordtype}{unsigned})\doxymbox{\hyperlink{mem__monitor_8cpp_ab76ba8eb2698fe188c569930a3a57fdb}{free\_heap}},\ (\textcolor{keywordtype}{unsigned})\doxymbox{\hyperlink{mem__monitor_8cpp_ad37a23247d7d0609fd7705461c5e3aab}{minimum\_heap}});}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{logger_8h_a7613da80511a0ee83d3114176f4ac59c}{log\_write}}(\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5ae6c7d41b255eff353251fbec6fe839e4}{OPERATION}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ UBaseType\_t\ count\ =\ uxTaskGetSystemState(\doxymbox{\hyperlink{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2}{task\_status}},\ \doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\_tasks}},\ NULL);}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ >\ \doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\_tasks}})\ \{}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ \doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\_tasks}};}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (UBaseType\_t\ i\ =\ 0;\ i\ <\ count;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}Task\ \%-\/12s\ |\ Stack\ HWM:\ \%u\ words"{}},}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2}{task\_status}}[i].pcTaskName,}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keywordtype}{unsigned})\doxymbox{\hyperlink{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2}{task\_status}}[i].usStackHighWaterMark);}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{logger_8h_a7613da80511a0ee83d3114176f4ac59c}{log\_write}}(\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5ae6c7d41b255eff353251fbec6fe839e4}{OPERATION}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mem__monitor_8cpp_source_l00057}00057\ \}}
+
+\end{DoxyCode}

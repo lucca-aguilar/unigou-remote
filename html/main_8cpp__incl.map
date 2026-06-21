@@ -1,0 +1,18 @@
+<map id="src/main.cpp" name="src/main.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="239,5,336,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="193,155,270,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,25,178,33,112,44,53,60,32,70,18,82,9,100,13,115,27,128,51,139,114,153,181,163,175,164,113,159,49,144,25,132,8,118,3,100,13,78,29,66,51,55,110,39,178,28,241,22"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="28,80,174,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="253,34,149,76,147,72,257,31"/>
+<area shape="rect" id="Node000004" href="$logger_8h.html" title="Asynchronous logging system based on queues and dedicated tasks. This module manages the creation,..." alt="" coords="198,80,265,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="280,31,252,70,249,66,276,34"/>
+<area shape="rect" id="Node000005" href="$mem__monitor_8h.html" title="Memory monitoring utility for heap and task stack tracking. This module tracks and reports system&#45;wid..." alt="" coords="289,80,401,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="298,30,328,68,323,67,297,35"/>
+<area shape="rect" id="Node000006" href="$task__tracer_8h.html" title="High&#45;frequency task tracing and context switch monitoring utility." alt="" coords="424,80,522,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="320,30,429,73,424,74,320,35"/>
+<area shape="rect" id="Node000007" href="$runtime__stats_8h.html" title="This module provides the interface to configure and read high&#45;resolution timer metrics required by Fr..." alt="" coords="545,80,657,107"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="336,29,533,75,528,77,336,34"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="434,107,285,153,284,148,428,107"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="569,155,633,181"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="603,105,603,141,599,137,599,109"/>
+</map>

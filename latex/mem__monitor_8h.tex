@@ -1,0 +1,55 @@
+\doxysection{include/\+mem\+\_\+monitor.h File Reference}
+\hypertarget{mem__monitor_8h}{}\label{mem__monitor_8h}\index{include/mem\_monitor.h@{include/mem\_monitor.h}}
+
+
+Memory monitoring utility for heap and task stack tracking. This module tracks and reports system-\/wide heap statistics alongside individual task stack usage to detect memory leaks and prevent stack overflows.  
+
+
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{mem__monitor_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{mem__monitor_8h_a4bcdb5e9066131ef59990c9f27be14e3}{mem\+\_\+monitor\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the memory monitor module and spawns its reporting task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Memory monitoring utility for heap and task stack tracking. This module tracks and reports system-\/wide heap statistics alongside individual task stack usage to detect memory leaks and prevent stack overflows. 
+
+
+
+Definition in file \doxymbox{\hyperlink{mem__monitor_8h_source}{mem\+\_\+monitor.\+h}}.
+
+
+
+\label{mem__monitor_8h_doc-func-members}
+\Hypertarget{mem__monitor_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{mem__monitor_8h_a4bcdb5e9066131ef59990c9f27be14e3}\index{mem\_monitor.h@{mem\_monitor.h}!mem\_monitor\_init@{mem\_monitor\_init}}
+\index{mem\_monitor\_init@{mem\_monitor\_init}!mem\_monitor.h@{mem\_monitor.h}}
+\doxysubsubsection{\texorpdfstring{mem\_monitor\_init()}{mem\_monitor\_init()}}
+{\footnotesize\ttfamily \label{mem__monitor_8h_a4bcdb5e9066131ef59990c9f27be14e3} 
+void mem\+\_\+monitor\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the memory monitor module and spawns its reporting task. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and after the logging subsystem has been initialized. If there is a failure in creating the task for processing memory data, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}.
+

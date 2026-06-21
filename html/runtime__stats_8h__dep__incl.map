@@ -1,0 +1,7 @@
+<map id="include/runtime_stats.h" name="include/runtime_stats.h">
+<area shape="rect" id="Node000001" title="This module provides the interface to configure and read high&#45;resolution timer metrics required by Fr..." alt="" coords="47,5,204,32"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html" title=" " alt="" coords="5,80,102,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,43,68,82,64,78,100,44"/>
+<area shape="rect" id="Node000003" href="$runtime__stats_8cpp.html" title="Implementation of the CPU runtime statistics tracking subsystem." alt="" coords="125,80,272,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,41,189,80,184,80,148,46"/>
+</map>

@@ -1,0 +1,60 @@
+\doxysection{logger.\+cpp}
+\hypertarget{logger_8cpp_source}{}\label{logger_8cpp_source}\index{src/logger.cpp@{src/logger.cpp}}
+\doxymbox{\hyperlink{logger_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <Arduino\_FreeRTOS.h>}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{logger_8h}{logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00010}\doxymbox{\hyperlink{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}{00010}}\ \textcolor{keyword}{static}\ QueueHandle\_t\ \doxymbox{\hyperlink{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}{logs}};}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00011}\doxymbox{\hyperlink{logger_8cpp_a707c41c85aa6ce52e3086b3d041b5897}{00011}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{logger_8cpp_a707c41c85aa6ce52e3086b3d041b5897}{max\_logs}}\ =\ 40;}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00012}00012\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{logger_8cpp_a3f9d987b7cde3e748e6dd6d4cff7707a}{log\_task}}(\textcolor{keywordtype}{void}*\ pvParameters);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00017}\doxymbox{\hyperlink{struct_log}{00017}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_log}{Log}}\ \{}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00018}\doxymbox{\hyperlink{struct_log_a0e71b964c43db1d806b186427234c68a}{00018}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_log_a0e71b964c43db1d806b186427234c68a}{task}}[configMAX\_TASK\_NAME\_LEN];\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00019}\doxymbox{\hyperlink{struct_log_a3bc6ccc6955b6a33cdf35f18cda27574}{00019}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_log_a3bc6ccc6955b6a33cdf35f18cda27574}{message}}[\doxymbox{\hyperlink{logger_8h_a2d987f07078d9f7dec7944ed60a0b358}{MAX\_LOG\_MSG\_LEN}}];\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00020}\doxymbox{\hyperlink{struct_log_a2f6d4d1e7d98e94ae0a7c2050e048ece}{00020}}\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_log_a2f6d4d1e7d98e94ae0a7c2050e048ece}{timestamp}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00021}\doxymbox{\hyperlink{struct_log_a92d51ffba068b55635eb128c8e49eb4b}{00021}}\ \ \ \ \ \doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}}\ \doxymbox{\hyperlink{struct_log_a92d51ffba068b55635eb128c8e49eb4b}{level}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00022}00022\ \};}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00024}\doxymbox{\hyperlink{logger_8h_a958e8ba8f7300649c3f12c77a228f28e}{00024}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{logger_8cpp_a958e8ba8f7300649c3f12c77a228f28e}{log\_init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00025}00025\ \doxymbox{\hyperlink{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}{logs}}\ =\ xQueueCreate(\doxymbox{\hyperlink{logger_8cpp_a707c41c85aa6ce52e3086b3d041b5897}{max\_logs}},\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_log}{Log}}));}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}{logs}}\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}FATAL:\ queue\ NULL"{}});}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(1);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00030}00030\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Queue\ OK"{}});}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (xTaskCreate(\doxymbox{\hyperlink{logger_8cpp_a3f9d987b7cde3e748e6dd6d4cff7707a}{log\_task}},\ \textcolor{stringliteral}{"{}Logger"{}},\ 256,\ NULL,\ 1,\ NULL)\ !=\ pdPASS)\ \{}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}FATAL:\ logger\ task\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(1);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00036}00036\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Logger\ task\ OK"{}});}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00039}\doxymbox{\hyperlink{logger_8h_a7613da80511a0ee83d3114176f4ac59c}{00039}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{logger_8cpp_a9a6bd0f2623fd13ac538a34c4c2f21a8}{log\_write}}(\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}}\ level,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ msg)\ \{}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00040}00040\ \ \ \ \ \doxymbox{\hyperlink{struct_log}{Log}}\ log;}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00041}00041\ \ \ \ \ log.\doxymbox{\hyperlink{struct_log_a92d51ffba068b55635eb128c8e49eb4b}{level}}\ =\ level;}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00042}00042\ \ \ \ \ log.\doxymbox{\hyperlink{struct_log_a2f6d4d1e7d98e94ae0a7c2050e048ece}{timestamp}}\ =\ xTaskGetTickCount();}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00043}00043\ \ \ \ \ strncpy(log.\doxymbox{\hyperlink{struct_log_a3bc6ccc6955b6a33cdf35f18cda27574}{message}},\ msg,\ \doxymbox{\hyperlink{logger_8h_a2d987f07078d9f7dec7944ed60a0b358}{MAX\_LOG\_MSG\_LEN}}\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00044}00044\ \ \ \ \ log.\doxymbox{\hyperlink{struct_log_a3bc6ccc6955b6a33cdf35f18cda27574}{message}}[\doxymbox{\hyperlink{logger_8h_a2d987f07078d9f7dec7944ed60a0b358}{MAX\_LOG\_MSG\_LEN}}\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00045}00045\ \ \ \ \ strncpy(log.\doxymbox{\hyperlink{struct_log_a0e71b964c43db1d806b186427234c68a}{task}},\ pcTaskGetName(NULL),\ configMAX\_TASK\_NAME\_LEN\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00046}00046\ \ \ \ \ log.\doxymbox{\hyperlink{struct_log_a0e71b964c43db1d806b186427234c68a}{task}}[configMAX\_TASK\_NAME\_LEN\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00047}00047\ \ \ \ \ xQueueSend(\doxymbox{\hyperlink{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}{logs}},\ \&log,\ pdMS\_TO\_TICKS(10));}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00053}\doxymbox{\hyperlink{logger_8cpp_a3f9d987b7cde3e748e6dd6d4cff7707a}{00053}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{logger_8cpp_a3f9d987b7cde3e748e6dd6d4cff7707a}{log\_task}}(\textcolor{keywordtype}{void}*\ pvParameters)\ \{}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ buffer[256];}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ level\_names[]\ =\ \{\textcolor{stringliteral}{"{}DEBUG"{}},\ \textcolor{stringliteral}{"{}OPERATION"{}},\ \textcolor{stringliteral}{"{}WARNING"{}},\ \textcolor{stringliteral}{"{}ERROR"{}}\};}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_log}{Log}}\ log;}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ xQueueReceive(\doxymbox{\hyperlink{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}{logs}},\ \&log,\ portMAX\_DELAY);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%lu,\%s,\%s,\%s\(\backslash\)n"{}},\ log.\doxymbox{\hyperlink{struct_log_a2f6d4d1e7d98e94ae0a7c2050e048ece}{timestamp}},\ log.\doxymbox{\hyperlink{struct_log_a0e71b964c43db1d806b186427234c68a}{task}},\ log.\doxymbox{\hyperlink{struct_log_a3bc6ccc6955b6a33cdf35f18cda27574}{message}},\ level\_names[log.\doxymbox{\hyperlink{struct_log_a92d51ffba068b55635eb128c8e49eb4b}{level}}]);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ Serial.print(buffer);}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{logger_8cpp_source_l00063}00063\ \}}
+
+\end{DoxyCode}

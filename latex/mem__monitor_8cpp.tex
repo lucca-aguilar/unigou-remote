@@ -1,0 +1,171 @@
+\doxysection{src/\+mem\+\_\+monitor.cpp File Reference}
+\hypertarget{mem__monitor_8cpp}{}\label{mem__monitor_8cpp}\index{src/mem\_monitor.cpp@{src/mem\_monitor.cpp}}
+
+
+Implementation of the periodic memory and task stack monitoring subsystem.  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \+\#include $<$Arduino\+\_\+\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \+\#include "{}logger.\+h"{}}\newline
+{\ttfamily \+\#include "{}mem\+\_\+monitor.\+h"{}}\newline
+Include dependency graph for mem\+\_\+monitor.\+cpp:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem__monitor_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{mem__monitor_8cpp_ab16fd5752850b04f280739525d9bc7f4}{mem\+\_\+task}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Free\+RTOS task that periodically profiles memory and task stack safety. Running as a strict periodic task via {\ttfamily v\+Task\+Delay\+Until}, this function captures the current heap status and uses {\ttfamily ux\+Task\+Get\+System\+State} to dynamically list all operational tasks, printing their remaining stack space. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{mem__monitor_8cpp_a4bcdb5e9066131ef59990c9f27be14e3}{mem\+\_\+monitor\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the memory monitor module and spawns its reporting task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const Tick\+Type\+\_\+t \doxymbox{\hyperlink{mem__monitor_8cpp_a8012574ad4e212aa981ab796b649dbde}{sampling\+\_\+time}} = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(200)
+\item 
+static const int \doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\+\_\+tasks}} = 10
+\item 
+static size\+\_\+t \doxymbox{\hyperlink{mem__monitor_8cpp_ab76ba8eb2698fe188c569930a3a57fdb}{free\+\_\+heap}} = 0
+\item 
+static size\+\_\+t \doxymbox{\hyperlink{mem__monitor_8cpp_ad37a23247d7d0609fd7705461c5e3aab}{minimum\+\_\+heap}} = 0
+\item 
+static Task\+Status\+\_\+t \doxymbox{\hyperlink{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2}{task\+\_\+status}} \+[\doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\+\_\+tasks}}]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the periodic memory and task stack monitoring subsystem. 
+
+
+
+Definition in file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+\label{mem__monitor_8cpp_doc-func-members}
+\Hypertarget{mem__monitor_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{mem__monitor_8cpp_a4bcdb5e9066131ef59990c9f27be14e3}\index{mem\_monitor.cpp@{mem\_monitor.cpp}!mem\_monitor\_init@{mem\_monitor\_init}}
+\index{mem\_monitor\_init@{mem\_monitor\_init}!mem\_monitor.cpp@{mem\_monitor.cpp}}
+\doxysubsubsection{\texorpdfstring{mem\_monitor\_init()}{mem\_monitor\_init()}}
+{\footnotesize\ttfamily \label{mem__monitor_8cpp_a4bcdb5e9066131ef59990c9f27be14e3} 
+void mem\+\_\+monitor\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the memory monitor module and spawns its reporting task. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and after the logging subsystem has been initialized. If there is a failure in creating the task for processing memory data, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}.
+
+\Hypertarget{mem__monitor_8cpp_ab16fd5752850b04f280739525d9bc7f4}\index{mem\_monitor.cpp@{mem\_monitor.cpp}!mem\_task@{mem\_task}}
+\index{mem\_task@{mem\_task}!mem\_monitor.cpp@{mem\_monitor.cpp}}
+\doxysubsubsection{\texorpdfstring{mem\_task()}{mem\_task()}}
+{\footnotesize\ttfamily \label{mem__monitor_8cpp_ab16fd5752850b04f280739525d9bc7f4} 
+void mem\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Free\+RTOS task that periodically profiles memory and task stack safety. Running as a strict periodic task via {\ttfamily v\+Task\+Delay\+Until}, this function captures the current heap status and uses {\ttfamily ux\+Task\+Get\+System\+State} to dynamically list all operational tasks, printing their remaining stack space. 
+
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{31}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00014}{free\+\_\+heap}}, \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}, \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00012}{max\+\_\+tasks}}, \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00015}{minimum\+\_\+heap}}, \doxymbox{\hyperlink{logger_8h_source_l00020}{OPERATION}}, \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00011}{sampling\+\_\+time}}, and \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00016}{task\+\_\+status}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00020}{mem\+\_\+monitor\+\_\+init()}}.
+
+
+
+\label{mem__monitor_8cpp_doc-var-members}
+\Hypertarget{mem__monitor_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{mem__monitor_8cpp_ab76ba8eb2698fe188c569930a3a57fdb}\index{mem\_monitor.cpp@{mem\_monitor.cpp}!free\_heap@{free\_heap}}
+\index{free\_heap@{free\_heap}!mem\_monitor.cpp@{mem\_monitor.cpp}}
+\doxysubsubsection{\texorpdfstring{free\_heap}{free\_heap}}
+{\footnotesize\ttfamily \label{mem__monitor_8cpp_ab76ba8eb2698fe188c569930a3a57fdb} 
+size\+\_\+t free\+\_\+heap = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00014}{14}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}.
+
+\Hypertarget{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}\index{mem\_monitor.cpp@{mem\_monitor.cpp}!max\_tasks@{max\_tasks}}
+\index{max\_tasks@{max\_tasks}!mem\_monitor.cpp@{mem\_monitor.cpp}}
+\doxysubsubsection{\texorpdfstring{max\_tasks}{max\_tasks}}
+{\footnotesize\ttfamily \label{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8} 
+const int max\+\_\+tasks = 10\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00012}{12}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}.
+
+\Hypertarget{mem__monitor_8cpp_ad37a23247d7d0609fd7705461c5e3aab}\index{mem\_monitor.cpp@{mem\_monitor.cpp}!minimum\_heap@{minimum\_heap}}
+\index{minimum\_heap@{minimum\_heap}!mem\_monitor.cpp@{mem\_monitor.cpp}}
+\doxysubsubsection{\texorpdfstring{minimum\_heap}{minimum\_heap}}
+{\footnotesize\ttfamily \label{mem__monitor_8cpp_ad37a23247d7d0609fd7705461c5e3aab} 
+size\+\_\+t minimum\+\_\+heap = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00015}{15}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}.
+
+\Hypertarget{mem__monitor_8cpp_a8012574ad4e212aa981ab796b649dbde}\index{mem\_monitor.cpp@{mem\_monitor.cpp}!sampling\_time@{sampling\_time}}
+\index{sampling\_time@{sampling\_time}!mem\_monitor.cpp@{mem\_monitor.cpp}}
+\doxysubsubsection{\texorpdfstring{sampling\_time}{sampling\_time}}
+{\footnotesize\ttfamily \label{mem__monitor_8cpp_a8012574ad4e212aa981ab796b649dbde} 
+const Tick\+Type\+\_\+t sampling\+\_\+time = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(200)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}.
+
+\Hypertarget{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2}\index{mem\_monitor.cpp@{mem\_monitor.cpp}!task\_status@{task\_status}}
+\index{task\_status@{task\_status}!mem\_monitor.cpp@{mem\_monitor.cpp}}
+\doxysubsubsection{\texorpdfstring{task\_status}{task\_status}}
+{\footnotesize\ttfamily \label{mem__monitor_8cpp_a01750afc89fb7c15ff1c6ab1db289af2} 
+Task\+Status\+\_\+t task\+\_\+status\+[\doxymbox{\hyperlink{mem__monitor_8cpp_a2a59c6d71fdb0c4721f0f157689752b8}{max\+\_\+tasks}}]\+\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{mem__monitor_8cpp_source}{mem\+\_\+monitor.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}.
+

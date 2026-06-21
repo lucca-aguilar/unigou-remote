@@ -1,0 +1,229 @@
+\doxysection{src/\+task\+\_\+tracer.cpp File Reference}
+\hypertarget{task__tracer_8cpp}{}\label{task__tracer_8cpp}\index{src/task\_tracer.cpp@{src/task\_tracer.cpp}}
+
+
+Implementation of the lock-\/free kernel event tracer.  
+
+
+{\ttfamily \+\#include "{}task\+\_\+tracer.\+h"{}}\newline
+{\ttfamily \+\#include "{}logger.\+h"{}}\newline
+{\ttfamily \+\#include $<$Arduino\+\_\+\+Free\+RTOS.\+h$>$}\newline
+Include dependency graph for task\+\_\+tracer.\+cpp:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{task__tracer_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_trace_event}{Trace\+Event}}
+\begin{DoxyCompactList}\small\item\em Data packet encapsulating a single captured kernel trace event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}{TRACER\+\_\+\+BUFFER\+\_\+\+SIZE}}~128
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{task__tracer_8cpp_a054c8a46e1fdaf98ee8c4fe7d06d551a}{tracer\+\_\+task}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em High-\/priority background Free\+RTOS task processing trace logs. This task wakes up periodically every 50ms, evaluates if any new events have been pushed into the ring buffer, formats them, and forwards them to the centralized system logger module. \end{DoxyCompactList}\item 
+static const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{task__tracer_8cpp_a1d985954f2ec0f3e9763d41416537a5c}{state\+\_\+to\+\_\+string}} (int state)
+\begin{DoxyCompactList}\small\item\em Internal translation utility converting state integer IDs into strings. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{task__tracer_8cpp_ac0f680357f76c2337be8a1597996d0f1}{tracer\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the task tracer subsystem and its reporting mechanism. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{task__tracer_8cpp_aee9ff4a320883df281b770e4c0621574}{tracer\+\_\+log\+\_\+from\+\_\+hook}} (const char \texorpdfstring{$\ast$}{*}task\+Name, int state)
+\begin{DoxyCompactList}\small\item\em Low-\/level hook function called by the Free\+RTOS kernel to log state changes. This function acts as the bridge between Free\+RTOS internal kernel events and user-\/space tracing logic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{struct_trace_event}{Trace\+Event}} \doxymbox{\hyperlink{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}{trace\+Buffer}} \+[\doxymbox{\hyperlink{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}{TRACER\+\_\+\+BUFFER\+\_\+\+SIZE}}]\+
+\item 
+static volatile uint32\+\_\+t \doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}} = 0
+\item 
+static volatile uint32\+\_\+t \doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{tail}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the lock-\/free kernel event tracer. 
+
+
+
+Definition in file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+\label{task__tracer_8cpp_doc-define-members}
+\Hypertarget{task__tracer_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}\index{task\_tracer.cpp@{task\_tracer.cpp}!TRACER\_BUFFER\_SIZE@{TRACER\_BUFFER\_SIZE}}
+\index{TRACER\_BUFFER\_SIZE@{TRACER\_BUFFER\_SIZE}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{TRACER\_BUFFER\_SIZE}{TRACER\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c} 
+\+\#define TRACER\+\_\+\+BUFFER\+\_\+\+SIZE~128}
+
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{task__tracer_8cpp_source_l00053}{tracer\+\_\+log\+\_\+from\+\_\+hook()}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+
+
+
+\label{task__tracer_8cpp_doc-func-members}
+\Hypertarget{task__tracer_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{task__tracer_8cpp_a1d985954f2ec0f3e9763d41416537a5c}\index{task\_tracer.cpp@{task\_tracer.cpp}!state\_to\_string@{state\_to\_string}}
+\index{state\_to\_string@{state\_to\_string}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{state\_to\_string()}{state\_to\_string()}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_a1d985954f2ec0f3e9763d41416537a5c} 
+const char \texorpdfstring{$\ast$}{*} state\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Internal translation utility converting state integer IDs into strings. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em state} & The integer value of the state transition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} A pointer to the corresponding static flash string literal. 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00034}{34}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+
+\Hypertarget{task__tracer_8cpp_ac0f680357f76c2337be8a1597996d0f1}\index{task\_tracer.cpp@{task\_tracer.cpp}!tracer\_init@{tracer\_init}}
+\index{tracer\_init@{tracer\_init}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{tracer\_init()}{tracer\_init()}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_ac0f680357f76c2337be8a1597996d0f1} 
+void tracer\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the task tracer subsystem and its reporting mechanism. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and after the logging subsystem has been initialized. If there is a failure in creating the task for task tracing, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00045}{45}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{task__tracer_8cpp_aee9ff4a320883df281b770e4c0621574}\index{task\_tracer.cpp@{task\_tracer.cpp}!tracer\_log\_from\_hook@{tracer\_log\_from\_hook}}
+\index{tracer\_log\_from\_hook@{tracer\_log\_from\_hook}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{tracer\_log\_from\_hook()}{tracer\_log\_from\_hook()}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_aee9ff4a320883df281b770e4c0621574} 
+void tracer\+\_\+log\+\_\+from\+\_\+hook (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{task\+Name}{, }\item[{int}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Low-\/level hook function called by the Free\+RTOS kernel to log state changes. This function acts as the bridge between Free\+RTOS internal kernel events and user-\/space tracing logic. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em task\+Name} & The string pointer containing the name of the tracked task. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em state} & The integer ID representing the target state transition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Implements C-\/linkage so it can be called seamlessly from inside the native C files of the Free\+RTOS core. 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00053}{53}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{task__tracer_8cpp_source_l00023}{head}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00025}{tail}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00021}{trace\+Buffer}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00010}{TRACER\+\_\+\+BUFFER\+\_\+\+SIZE}}.
+
+\Hypertarget{task__tracer_8cpp_a054c8a46e1fdaf98ee8c4fe7d06d551a}\index{task\_tracer.cpp@{task\_tracer.cpp}!tracer\_task@{tracer\_task}}
+\index{tracer\_task@{tracer\_task}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{tracer\_task()}{tracer\_task()}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_a054c8a46e1fdaf98ee8c4fe7d06d551a} 
+void tracer\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+High-\/priority background Free\+RTOS task processing trace logs. This task wakes up periodically every 50ms, evaluates if any new events have been pushed into the ring buffer, formats them, and forwards them to the centralized system logger module. 
+
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{68}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{task__tracer_8cpp_source_l00023}{head}}, \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}, \doxymbox{\hyperlink{logger_8h_source_l00020}{OPERATION}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00034}{state\+\_\+to\+\_\+string()}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00025}{tail}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00021}{trace\+Buffer}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00010}{TRACER\+\_\+\+BUFFER\+\_\+\+SIZE}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{task__tracer_8cpp_source_l00045}{tracer\+\_\+init()}}.
+
+
+
+\label{task__tracer_8cpp_doc-var-members}
+\Hypertarget{task__tracer_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}\index{task\_tracer.cpp@{task\_tracer.cpp}!head@{head}}
+\index{head@{head}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{head}{head}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558} 
+volatile uint32\+\_\+t head = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00023}{23}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{task__tracer_8cpp_source_l00053}{tracer\+\_\+log\+\_\+from\+\_\+hook()}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+
+\Hypertarget{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}\index{task\_tracer.cpp@{task\_tracer.cpp}!tail@{tail}}
+\index{tail@{tail}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{tail}{tail}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7} 
+volatile uint32\+\_\+t tail = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00025}{25}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{task__tracer_8cpp_source_l00053}{tracer\+\_\+log\+\_\+from\+\_\+hook()}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+
+\Hypertarget{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}\index{task\_tracer.cpp@{task\_tracer.cpp}!traceBuffer@{traceBuffer}}
+\index{traceBuffer@{traceBuffer}!task\_tracer.cpp@{task\_tracer.cpp}}
+\doxysubsubsection{\texorpdfstring{traceBuffer}{traceBuffer}}
+{\footnotesize\ttfamily \label{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b} 
+\doxymbox{\hyperlink{struct_trace_event}{Trace\+Event}} trace\+Buffer\+[\doxymbox{\hyperlink{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}{TRACER\+\_\+\+BUFFER\+\_\+\+SIZE}}]\+\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00021}{21}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{task__tracer_8cpp_source_l00053}{tracer\+\_\+log\+\_\+from\+\_\+hook()}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+

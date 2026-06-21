@@ -1,0 +1,53 @@
+\doxysection{runtime\+\_\+stats.\+cpp}
+\hypertarget{runtime__stats_8cpp_source}{}\label{runtime__stats_8cpp_source}\index{src/runtime\_stats.cpp@{src/runtime\_stats.cpp}}
+\doxymbox{\hyperlink{runtime__stats_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <Arduino\_FreeRTOS.h>}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{runtime__stats_8h}{runtime\_stats.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00010}\doxymbox{\hyperlink{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}{00010}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}{stats\_buffer}}[2048];}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00012}00012\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{runtime__stats_8cpp_ad3812ce5350fe3bfd644c044fe5a90a3}{runtime\_stats\_task}}(\textcolor{keywordtype}{void}*\ pvParameters);}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00014}\doxymbox{\hyperlink{runtime__stats_8cpp_ad1413ebea188a9f87348f273570f6e9e}{00014}}\ \textcolor{keyword}{static}\ uint32\_t\ \doxymbox{\hyperlink{runtime__stats_8cpp_ad1413ebea188a9f87348f273570f6e9e}{start\_micros}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00016}\doxymbox{\hyperlink{runtime__stats_8h_a407d701f7ae7e9321cdee7325f147f4e}{00016}}\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{runtime__stats_8cpp_a407d701f7ae7e9321cdee7325f147f4e}{runtime\_stats\_timer\_init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00017}00017\ \ \ \ \ \doxymbox{\hyperlink{runtime__stats_8cpp_ad1413ebea188a9f87348f273570f6e9e}{start\_micros}}\ =\ micros();}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00020}\doxymbox{\hyperlink{runtime__stats_8h_a3710ccdeaa915ed39c999d7d53506ad2}{00020}}\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ uint32\_t\ \doxymbox{\hyperlink{runtime__stats_8cpp_a3710ccdeaa915ed39c999d7d53506ad2}{runtime\_stats\_timer\_get\_value}}()\ \{}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{return}\ micros()\ -\/\ \doxymbox{\hyperlink{runtime__stats_8cpp_ad1413ebea188a9f87348f273570f6e9e}{start\_micros}};\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00024}\doxymbox{\hyperlink{runtime__stats_8h_a6364a990f5099e7d6542f661109cd165}{00024}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{runtime__stats_8cpp_a6364a990f5099e7d6542f661109cd165}{runtime\_stats\_init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (xTaskCreate(\doxymbox{\hyperlink{runtime__stats_8cpp_ad3812ce5350fe3bfd644c044fe5a90a3}{runtime\_stats\_task}},\ \textcolor{stringliteral}{"{}Runtime\ stats"{}},\ 256,\ NULL,\ 1,\ NULL)\ !=\ pdPASS)\ \{}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}FATAL:\ Runtime\ stats\ task\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(1);\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00029}00029\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Runtime\ stats\ task\ OK"{}});}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00035}\doxymbox{\hyperlink{runtime__stats_8cpp_ad3812ce5350fe3bfd644c044fe5a90a3}{00035}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{runtime__stats_8cpp_ad3812ce5350fe3bfd644c044fe5a90a3}{runtime\_stats\_task}}(\textcolor{keywordtype}{void}*\ pvParameters)\ \{}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00036}00036\ \ \ \ \ (void)pvParameters;\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00037}00037\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00038}00038\ \ \ \ \ TickType\_t\ LastWakeTime\ =\ xTaskGetTickCount();}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ vTaskDelayUntil(\&LastWakeTime,\ pdMS\_TO\_TICKS(5000));}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ memset(\doxymbox{\hyperlink{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}{stats\_buffer}},\ 0,\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}{stats\_buffer}}));}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\(\backslash\)n================================="{}});}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ CPU\ USAGE\ STATISTICS\ \ \ \ \ \ \ "{}});}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}================================="{}});}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ vTaskGetRunTimeStats(\doxymbox{\hyperlink{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}{stats\_buffer}});}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ Serial.print(\doxymbox{\hyperlink{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}{stats\_buffer}});}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{runtime__stats_8cpp_source_l00053}00053\ \}}
+
+\end{DoxyCode}

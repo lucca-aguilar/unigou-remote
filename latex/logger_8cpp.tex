@@ -1,0 +1,165 @@
+\doxysection{src/\+logger.cpp File Reference}
+\hypertarget{logger_8cpp}{}\label{logger_8cpp}\index{src/logger.cpp@{src/logger.cpp}}
+
+
+Implementation of the asynchronous logger module using Free\+RTOS.  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \+\#include $<$Arduino\+\_\+\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \+\#include "{}logger.\+h"{}}\newline
+Include dependency graph for logger.\+cpp:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{logger_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_log}{Log}}
+\begin{DoxyCompactList}\small\item\em Internal structure representing a single log entry packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{logger_8cpp_a3f9d987b7cde3e748e6dd6d4cff7707a}{log\+\_\+task}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Dedicated Free\+RTOS task that consumes and outputs logs. This task runs in an infinite loop and remains in the Blocked state as long as the log queue is empty, consuming 0\% CPU. When a log arrives, it wakes up, formats the data into a CSV-\/like string, and streams it over the hardware Serial interface. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{logger_8cpp_a958e8ba8f7300649c3f12c77a228f28e}{log\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the log queue and the log processing task. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{logger_8cpp_a9a6bd0f2623fd13ac538a34c4c2f21a8}{log\+\_\+write}} (\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}} level, const char \texorpdfstring{$\ast$}{*}msg)
+\begin{DoxyCompactList}\small\item\em Creates a log with required fields and sends it to the log queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static Queue\+Handle\+\_\+t \doxymbox{\hyperlink{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}{logs}}
+\item 
+static const int \doxymbox{\hyperlink{logger_8cpp_a707c41c85aa6ce52e3086b3d041b5897}{max\+\_\+logs}} = 40
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the asynchronous logger module using Free\+RTOS. 
+
+
+
+Definition in file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+\label{logger_8cpp_doc-func-members}
+\Hypertarget{logger_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{logger_8cpp_a958e8ba8f7300649c3f12c77a228f28e}\index{logger.cpp@{logger.cpp}!log\_init@{log\_init}}
+\index{log\_init@{log\_init}!logger.cpp@{logger.cpp}}
+\doxysubsubsection{\texorpdfstring{log\_init()}{log\_init()}}
+{\footnotesize\ttfamily \label{logger_8cpp_a958e8ba8f7300649c3f12c77a228f28e} 
+void log\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the log queue and the log processing task. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and before any call to {\ttfamily \doxylink{logger_8h_a7613da80511a0ee83d3114176f4ac59c}{log\+\_\+write()}}. If there is a failure in allocating memory for the log queue or in creating the task for processing the logs, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{logger_8cpp_source_l00024}{24}} of file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00053}{log\+\_\+task()}}, \doxymbox{\hyperlink{logger_8cpp_source_l00010}{logs}}, and \doxymbox{\hyperlink{logger_8cpp_source_l00011}{max\+\_\+logs}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{logger_8cpp_a3f9d987b7cde3e748e6dd6d4cff7707a}\index{logger.cpp@{logger.cpp}!log\_task@{log\_task}}
+\index{log\_task@{log\_task}!logger.cpp@{logger.cpp}}
+\doxysubsubsection{\texorpdfstring{log\_task()}{log\_task()}}
+{\footnotesize\ttfamily \label{logger_8cpp_a3f9d987b7cde3e748e6dd6d4cff7707a} 
+void log\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Dedicated Free\+RTOS task that consumes and outputs logs. This task runs in an infinite loop and remains in the Blocked state as long as the log queue is empty, consuming 0\% CPU. When a log arrives, it wakes up, formats the data into a CSV-\/like string, and streams it over the hardware Serial interface. 
+
+
+
+Definition at line \doxymbox{\hyperlink{logger_8cpp_source_l00053}{53}} of file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00021}{Log::\+level}}, \doxymbox{\hyperlink{logger_8cpp_source_l00010}{logs}}, \doxymbox{\hyperlink{logger_8cpp_source_l00019}{Log::\+message}}, \doxymbox{\hyperlink{logger_8cpp_source_l00018}{Log::\+task}}, and \doxymbox{\hyperlink{logger_8cpp_source_l00020}{Log::\+timestamp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{logger_8cpp_source_l00024}{log\+\_\+init()}}.
+
+\Hypertarget{logger_8cpp_a9a6bd0f2623fd13ac538a34c4c2f21a8}\index{logger.cpp@{logger.cpp}!log\_write@{log\_write}}
+\index{log\_write@{log\_write}!logger.cpp@{logger.cpp}}
+\doxysubsubsection{\texorpdfstring{log\_write()}{log\_write()}}
+{\footnotesize\ttfamily \label{logger_8cpp_a9a6bd0f2623fd13ac538a34c4c2f21a8} 
+void log\+\_\+write (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5}{Level}}}]{level}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{msg}{}\end{DoxyParamCaption})}
+
+
+
+Creates a log with required fields and sends it to the log queue. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em level} & Severity of the log. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em message} & String containing message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The \doxylink{logger_8h_a958e8ba8f7300649c3f12c77a228f28e}{log\+\_\+init()} function should have been executed successfully. 
+\end{DoxyPrecond}
+
+
+Definition at line \doxymbox{\hyperlink{logger_8cpp_source_l00039}{39}} of file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{logger_8cpp_source_l00021}{Log::\+level}}, \doxymbox{\hyperlink{logger_8cpp_source_l00010}{logs}}, \doxymbox{\hyperlink{logger_8h_source_l00012}{MAX\+\_\+\+LOG\+\_\+\+MSG\+\_\+\+LEN}}, \doxymbox{\hyperlink{logger_8cpp_source_l00019}{Log::\+message}}, \doxymbox{\hyperlink{logger_8cpp_source_l00018}{Log::\+task}}, and \doxymbox{\hyperlink{logger_8cpp_source_l00020}{Log::\+timestamp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{mem__monitor_8cpp_source_l00031}{mem\+\_\+task()}}, \doxymbox{\hyperlink{main_8cpp_source_l00048}{Task\+A()}}, \doxymbox{\hyperlink{main_8cpp_source_l00072}{Task\+B()}}, \doxymbox{\hyperlink{main_8cpp_source_l00117}{Task\+Controller()}}, \doxymbox{\hyperlink{main_8cpp_source_l00096}{Task\+Memory()}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+
+
+
+\label{logger_8cpp_doc-var-members}
+\Hypertarget{logger_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d}\index{logger.cpp@{logger.cpp}!logs@{logs}}
+\index{logs@{logs}!logger.cpp@{logger.cpp}}
+\doxysubsubsection{\texorpdfstring{logs}{logs}}
+{\footnotesize\ttfamily \label{logger_8cpp_ae7b617604f7c6355cb3c948110aeee3d} 
+Queue\+Handle\+\_\+t logs\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{logger_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{logger_8cpp_source_l00024}{log\+\_\+init()}}, \doxymbox{\hyperlink{logger_8cpp_source_l00053}{log\+\_\+task()}}, and \doxymbox{\hyperlink{logger_8cpp_source_l00039}{log\+\_\+write()}}.
+
+\Hypertarget{logger_8cpp_a707c41c85aa6ce52e3086b3d041b5897}\index{logger.cpp@{logger.cpp}!max\_logs@{max\_logs}}
+\index{max\_logs@{max\_logs}!logger.cpp@{logger.cpp}}
+\doxysubsubsection{\texorpdfstring{max\_logs}{max\_logs}}
+{\footnotesize\ttfamily \label{logger_8cpp_a707c41c85aa6ce52e3086b3d041b5897} 
+const int max\+\_\+logs = 40\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{logger_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{logger_8cpp_source_l00024}{log\+\_\+init()}}.
+

@@ -1,0 +1,116 @@
+\doxysection{include/\+runtime\+\_\+stats.h File Reference}
+\hypertarget{runtime__stats_8h}{}\label{runtime__stats_8h}\index{include/runtime\_stats.h@{include/runtime\_stats.h}}
+
+
+This module provides the interface to configure and read high-\/resolution timer metrics required by Free\+RTOS to calculate CPU usage per task.  
+
+
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+Include dependency graph for runtime\+\_\+stats.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{runtime__stats_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{runtime__stats_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{runtime__stats_8h_a6364a990f5099e7d6542f661109cd165}{runtime\+\_\+stats\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the runtime statistics subsystem and its reporting mechanism. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{runtime__stats_8h_a407d701f7ae7e9321cdee7325f147f4e}{runtime\+\_\+stats\+\_\+timer\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Configures the high-\/resolution hardware timer for tracking CPU time. \end{DoxyCompactList}\item 
+uint32\+\_\+t \doxymbox{\hyperlink{runtime__stats_8h_a3710ccdeaa915ed39c999d7d53506ad2}{runtime\+\_\+stats\+\_\+timer\+\_\+get\+\_\+value}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current value of the high-\/resolution runtime timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module provides the interface to configure and read high-\/resolution timer metrics required by Free\+RTOS to calculate CPU usage per task. 
+
+\begin{DoxyNote}{Note}
+This file utilizes {\ttfamily extern "{}C"{}} linkage to ensure compatibility between Free\+RTOS kernel hooks and the Arduino framework. 
+\end{DoxyNote}
+
+
+Definition in file \doxymbox{\hyperlink{runtime__stats_8h_source}{runtime\+\_\+stats.\+h}}.
+
+
+
+\label{runtime__stats_8h_doc-func-members}
+\Hypertarget{runtime__stats_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{runtime__stats_8h_a6364a990f5099e7d6542f661109cd165}\index{runtime\_stats.h@{runtime\_stats.h}!runtime\_stats\_init@{runtime\_stats\_init}}
+\index{runtime\_stats\_init@{runtime\_stats\_init}!runtime\_stats.h@{runtime\_stats.h}}
+\doxysubsubsection{\texorpdfstring{runtime\_stats\_init()}{runtime\_stats\_init()}}
+{\footnotesize\ttfamily \label{runtime__stats_8h_a6364a990f5099e7d6542f661109cd165} 
+void runtime\+\_\+stats\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the runtime statistics subsystem and its reporting mechanism. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and after the logging subsystem has been initialized. If there is a failure in creating the task for processing runtime statistics, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00024}{24}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00035}{runtime\+\_\+stats\+\_\+task()}}.
+
+\Hypertarget{runtime__stats_8h_a3710ccdeaa915ed39c999d7d53506ad2}\index{runtime\_stats.h@{runtime\_stats.h}!runtime\_stats\_timer\_get\_value@{runtime\_stats\_timer\_get\_value}}
+\index{runtime\_stats\_timer\_get\_value@{runtime\_stats\_timer\_get\_value}!runtime\_stats.h@{runtime\_stats.h}}
+\doxysubsubsection{\texorpdfstring{runtime\_stats\_timer\_get\_value()}{runtime\_stats\_timer\_get\_value()}}
+{\footnotesize\ttfamily \label{runtime__stats_8h_a3710ccdeaa915ed39c999d7d53506ad2} 
+uint32\+\_\+t runtime\+\_\+stats\+\_\+timer\+\_\+get\+\_\+value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current value of the high-\/resolution runtime timer. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t The current high-\/resolution timer tick count. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is intended to be mapped directly to the Free\+RTOS macro {\ttfamily port\+GET\+\_\+\+RUN\+\_\+\+TIME\+\_\+\+COUNTER\+\_\+\+VALUE()}. 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00014}{start\+\_\+micros}}.
+
+\Hypertarget{runtime__stats_8h_a407d701f7ae7e9321cdee7325f147f4e}\index{runtime\_stats.h@{runtime\_stats.h}!runtime\_stats\_timer\_init@{runtime\_stats\_timer\_init}}
+\index{runtime\_stats\_timer\_init@{runtime\_stats\_timer\_init}!runtime\_stats.h@{runtime\_stats.h}}
+\doxysubsubsection{\texorpdfstring{runtime\_stats\_timer\_init()}{runtime\_stats\_timer\_init()}}
+{\footnotesize\ttfamily \label{runtime__stats_8h_a407d701f7ae7e9321cdee7325f147f4e} 
+void runtime\+\_\+stats\+\_\+timer\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Configures the high-\/resolution hardware timer for tracking CPU time. 
+
+\begin{DoxyNote}{Note}
+This function is intended to be mapped directly to the Free\+RTOS macro {\ttfamily port\+CONFIGURE\+\_\+\+TIMER\+\_\+\+FOR\+\_\+\+RUN\+\_\+\+TIME\+\_\+\+STATS()}. 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00014}{start\+\_\+micros}}.
+

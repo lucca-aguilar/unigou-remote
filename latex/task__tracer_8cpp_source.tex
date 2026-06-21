@@ -1,0 +1,80 @@
+\doxysection{task\+\_\+tracer.\+cpp}
+\hypertarget{task__tracer_8cpp_source}{}\label{task__tracer_8cpp_source}\index{src/task\_tracer.cpp@{src/task\_tracer.cpp}}
+\doxymbox{\hyperlink{task__tracer_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{task__tracer_8h}{task\_tracer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{logger_8h}{logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <Arduino\_FreeRTOS.h>}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00010}\doxymbox{\hyperlink{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}{00010}}\ \textcolor{preprocessor}{\#define\ TRACER\_BUFFER\_SIZE\ 128}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00015}\doxymbox{\hyperlink{struct_trace_event}{00015}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_trace_event}{TraceEvent}}\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00016}\doxymbox{\hyperlink{struct_trace_event_a5b657be810fc7c2de378bb4950c78cb6}{00016}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{struct_trace_event_a5b657be810fc7c2de378bb4950c78cb6}{taskName}};\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00017}\doxymbox{\hyperlink{struct_trace_event_a298653d7a91f119f538821ab00408ade}{00017}}\ \ \ \ \ uint32\_t\ \ \ \ \ \doxymbox{\hyperlink{struct_trace_event_a298653d7a91f119f538821ab00408ade}{timestamp}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00018}\doxymbox{\hyperlink{struct_trace_event_aa5ed6bb4afaffd1ea8991d38cb392468}{00018}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_trace_event_aa5ed6bb4afaffd1ea8991d38cb392468}{state}};\ \ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00019}00019\ \};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00021}\doxymbox{\hyperlink{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}{00021}}\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{struct_trace_event}{TraceEvent}}\ \doxymbox{\hyperlink{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}{traceBuffer}}[\doxymbox{\hyperlink{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}{TRACER\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00023}\doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{00023}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{volatile}\ uint32\_t\ \doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00025}\doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{00025}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{volatile}\ uint32\_t\ \doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{tail}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00027}00027\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{task__tracer_8cpp_a054c8a46e1fdaf98ee8c4fe7d06d551a}{tracer\_task}}(\textcolor{keywordtype}{void}*\ pvParameters);}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00034}\doxymbox{\hyperlink{task__tracer_8cpp_a1d985954f2ec0f3e9763d41416537a5c}{00034}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{task__tracer_8cpp_a1d985954f2ec0f3e9763d41416537a5c}{state\_to\_string}}(\textcolor{keywordtype}{int}\ state)\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{switch}\ (state)\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RUNNING"{}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}READY"{}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}BLOCKED"{}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SUSPENDED"{}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}DELETED"{}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}UNKNOWN"{}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00045}\doxymbox{\hyperlink{task__tracer_8h_ac0f680357f76c2337be8a1597996d0f1}{00045}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{task__tracer_8cpp_ac0f680357f76c2337be8a1597996d0f1}{tracer\_init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (xTaskCreate(\doxymbox{\hyperlink{task__tracer_8cpp_a054c8a46e1fdaf98ee8c4fe7d06d551a}{tracer\_task}},\ \textcolor{stringliteral}{"{}Tracer"{}},\ 256,\ NULL,\ configMAX\_PRIORITIES\ -\/\ 1,\ NULL)\ !=\ pdPASS)\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}FATAL:\ tracer\ task\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(1);\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00050}00050\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Tracer\ OK"{}});}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00053}\doxymbox{\hyperlink{task__tracer_8h_aee9ff4a320883df281b770e4c0621574}{00053}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{task__tracer_8cpp_aee9ff4a320883df281b770e4c0621574}{tracer\_log\_from\_hook}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ taskName,\ \textcolor{keywordtype}{int}\ state)\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00054}00054\ \ \ \ \ uint32\_t\ next\_head\ =\ (\doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}}\ +\ 1)\ \%\ \doxymbox{\hyperlink{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}{TRACER\_BUFFER\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (next\_head\ !=\ \doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{tail}})\ \{\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}{traceBuffer}}[\doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}}].timestamp\ =\ xTaskGetTickCountFromISR();\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}{traceBuffer}}[\doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}}].taskName\ =\ taskName;}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}{traceBuffer}}[\doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}}].state\ =\ state;}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}}\ =\ next\_head;}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00068}\doxymbox{\hyperlink{task__tracer_8cpp_a054c8a46e1fdaf98ee8c4fe7d06d551a}{00068}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{task__tracer_8cpp_a054c8a46e1fdaf98ee8c4fe7d06d551a}{tracer\_task}}(\textcolor{keywordtype}{void}*\ pvParameters)\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00069}00069\ \ \ \ \ (void)pvParameters;\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00070}00070\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{tail}}\ !=\ \doxymbox{\hyperlink{task__tracer_8cpp_a5f4413ef4a8b1d82ffcfce4265fde558}{head}})\ \{}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_trace_event}{TraceEvent}}\ \textcolor{keyword}{event}\ =\ \doxymbox{\hyperlink{task__tracer_8cpp_af7f3e592daca06ecda1bb8c56d6e452b}{traceBuffer}}[\doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{tail}}];}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{tail}}\ =\ (\doxymbox{\hyperlink{task__tracer_8cpp_ac053cdb6967e8901ed4c87327d649bf7}{tail}}\ +\ 1)\ \%\ \doxymbox{\hyperlink{task__tracer_8cpp_a1dcb70d00161c01f45e215413c23b66c}{TRACER\_BUFFER\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ line[80];}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(line,\ \textcolor{keyword}{sizeof}(line),\ \textcolor{stringliteral}{"{}\%lu,\%s,\%s"{}},}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ event.timestamp,}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ event.taskName,}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{task__tracer_8cpp_a1d985954f2ec0f3e9763d41416537a5c}{state\_to\_string}}(event.state));}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{logger_8h_a7613da80511a0ee83d3114176f4ac59c}{log\_write}}(\doxymbox{\hyperlink{logger_8h_a221b779e6bb7b8d40677d7642bfefac5ae6c7d41b255eff353251fbec6fe839e4}{OPERATION}},\ line);}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ vTaskDelay(pdMS\_TO\_TICKS(50));}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{task__tracer_8cpp_source_l00088}00088\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,98 @@
+\doxysection{include/\+task\+\_\+tracer.h File Reference}
+\hypertarget{task__tracer_8h}{}\label{task__tracer_8h}\index{include/task\_tracer.h@{include/task\_tracer.h}}
+
+
+High-\/frequency task tracing and context switch monitoring utility.  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+Include dependency graph for task\+\_\+tracer.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{task__tracer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{task__tracer_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{task__tracer_8h_ac0f680357f76c2337be8a1597996d0f1}{tracer\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the task tracer subsystem and its reporting mechanism. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{task__tracer_8h_aee9ff4a320883df281b770e4c0621574}{tracer\+\_\+log\+\_\+from\+\_\+hook}} (const char \texorpdfstring{$\ast$}{*}task\+Name, int state)
+\begin{DoxyCompactList}\small\item\em Low-\/level hook function called by the Free\+RTOS kernel to log state changes. This function acts as the bridge between Free\+RTOS internal kernel events and user-\/space tracing logic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+High-\/frequency task tracing and context switch monitoring utility. 
+
+
+
+Definition in file \doxymbox{\hyperlink{task__tracer_8h_source}{task\+\_\+tracer.\+h}}.
+
+
+
+\label{task__tracer_8h_doc-func-members}
+\Hypertarget{task__tracer_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{task__tracer_8h_ac0f680357f76c2337be8a1597996d0f1}\index{task\_tracer.h@{task\_tracer.h}!tracer\_init@{tracer\_init}}
+\index{tracer\_init@{tracer\_init}!task\_tracer.h@{task\_tracer.h}}
+\doxysubsubsection{\texorpdfstring{tracer\_init()}{tracer\_init()}}
+{\footnotesize\ttfamily \label{task__tracer_8h_ac0f680357f76c2337be8a1597996d0f1} 
+void tracer\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the task tracer subsystem and its reporting mechanism. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and after the logging subsystem has been initialized. If there is a failure in creating the task for task tracing, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00045}{45}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{task__tracer_8cpp_source_l00068}{tracer\+\_\+task()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00020}{setup()}}.
+
+\Hypertarget{task__tracer_8h_aee9ff4a320883df281b770e4c0621574}\index{task\_tracer.h@{task\_tracer.h}!tracer\_log\_from\_hook@{tracer\_log\_from\_hook}}
+\index{tracer\_log\_from\_hook@{tracer\_log\_from\_hook}!task\_tracer.h@{task\_tracer.h}}
+\doxysubsubsection{\texorpdfstring{tracer\_log\_from\_hook()}{tracer\_log\_from\_hook()}}
+{\footnotesize\ttfamily \label{task__tracer_8h_aee9ff4a320883df281b770e4c0621574} 
+void tracer\+\_\+log\+\_\+from\+\_\+hook (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{task\+Name}{, }\item[{int}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Low-\/level hook function called by the Free\+RTOS kernel to log state changes. This function acts as the bridge between Free\+RTOS internal kernel events and user-\/space tracing logic. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em task\+Name} & The string pointer containing the name of the tracked task. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em state} & The integer ID representing the target state transition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Implements C-\/linkage so it can be called seamlessly from inside the native C files of the Free\+RTOS core. 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{task__tracer_8cpp_source_l00053}{53}} of file \doxymbox{\hyperlink{task__tracer_8cpp_source}{task\+\_\+tracer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{task__tracer_8cpp_source_l00023}{head}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00025}{tail}}, \doxymbox{\hyperlink{task__tracer_8cpp_source_l00021}{trace\+Buffer}}, and \doxymbox{\hyperlink{task__tracer_8cpp_source_l00010}{TRACER\+\_\+\+BUFFER\+\_\+\+SIZE}}.
+

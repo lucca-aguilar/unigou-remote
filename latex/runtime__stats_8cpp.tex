@@ -1,0 +1,171 @@
+\doxysection{src/\+runtime\+\_\+stats.cpp File Reference}
+\hypertarget{runtime__stats_8cpp}{}\label{runtime__stats_8cpp}\index{src/runtime\_stats.cpp@{src/runtime\_stats.cpp}}
+
+
+Implementation of the CPU runtime statistics tracking subsystem.  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \+\#include $<$Arduino\+\_\+\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \+\#include "{}runtime\+\_\+stats.\+h"{}}\newline
+Include dependency graph for runtime\+\_\+stats.\+cpp:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{runtime__stats_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{runtime__stats_8cpp_ad3812ce5350fe3bfd644c044fe5a90a3}{runtime\+\_\+stats\+\_\+task}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Periodic Free\+RTOS task that prints task CPU usage execution time. Wakes up strictly every 5000ms using {\ttfamily v\+Task\+Delay\+Until}. It zeroes out the tracking buffer, invokes the heavy kernel metrics collector, and flushes the resulting string table out to the hardware Serial port. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{runtime__stats_8cpp_a407d701f7ae7e9321cdee7325f147f4e}{runtime\+\_\+stats\+\_\+timer\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Configures the high-\/resolution hardware timer for tracking CPU time. \end{DoxyCompactList}\item 
+uint32\+\_\+t \doxymbox{\hyperlink{runtime__stats_8cpp_a3710ccdeaa915ed39c999d7d53506ad2}{runtime\+\_\+stats\+\_\+timer\+\_\+get\+\_\+value}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current value of the high-\/resolution runtime timer. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{runtime__stats_8cpp_a6364a990f5099e7d6542f661109cd165}{runtime\+\_\+stats\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the runtime statistics subsystem and its reporting mechanism. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char \doxymbox{\hyperlink{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}{stats\+\_\+buffer}} \+[2048]\+
+\item 
+static uint32\+\_\+t \doxymbox{\hyperlink{runtime__stats_8cpp_ad1413ebea188a9f87348f273570f6e9e}{start\+\_\+micros}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the CPU runtime statistics tracking subsystem. 
+
+
+
+Definition in file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+\label{runtime__stats_8cpp_doc-func-members}
+\Hypertarget{runtime__stats_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{runtime__stats_8cpp_a6364a990f5099e7d6542f661109cd165}\index{runtime\_stats.cpp@{runtime\_stats.cpp}!runtime\_stats\_init@{runtime\_stats\_init}}
+\index{runtime\_stats\_init@{runtime\_stats\_init}!runtime\_stats.cpp@{runtime\_stats.cpp}}
+\doxysubsubsection{\texorpdfstring{runtime\_stats\_init()}{runtime\_stats\_init()}}
+{\footnotesize\ttfamily \label{runtime__stats_8cpp_a6364a990f5099e7d6542f661109cd165} 
+void runtime\+\_\+stats\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the runtime statistics subsystem and its reporting mechanism. 
+
+\begin{DoxyWarning}{Warning}
+This function should only be called once, during system initialization and after the logging subsystem has been initialized. If there is a failure in creating the task for processing runtime statistics, the system will display an error message and enter an infinite loop. 
+\end{DoxyWarning}
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00024}{24}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00035}{runtime\+\_\+stats\+\_\+task()}}.
+
+\Hypertarget{runtime__stats_8cpp_ad3812ce5350fe3bfd644c044fe5a90a3}\index{runtime\_stats.cpp@{runtime\_stats.cpp}!runtime\_stats\_task@{runtime\_stats\_task}}
+\index{runtime\_stats\_task@{runtime\_stats\_task}!runtime\_stats.cpp@{runtime\_stats.cpp}}
+\doxysubsubsection{\texorpdfstring{runtime\_stats\_task()}{runtime\_stats\_task()}}
+{\footnotesize\ttfamily \label{runtime__stats_8cpp_ad3812ce5350fe3bfd644c044fe5a90a3} 
+void runtime\+\_\+stats\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Periodic Free\+RTOS task that prints task CPU usage execution time. Wakes up strictly every 5000ms using {\ttfamily v\+Task\+Delay\+Until}. It zeroes out the tracking buffer, invokes the heavy kernel metrics collector, and flushes the resulting string table out to the hardware Serial port. 
+
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00035}{35}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00010}{stats\+\_\+buffer}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00024}{runtime\+\_\+stats\+\_\+init()}}.
+
+\Hypertarget{runtime__stats_8cpp_a3710ccdeaa915ed39c999d7d53506ad2}\index{runtime\_stats.cpp@{runtime\_stats.cpp}!runtime\_stats\_timer\_get\_value@{runtime\_stats\_timer\_get\_value}}
+\index{runtime\_stats\_timer\_get\_value@{runtime\_stats\_timer\_get\_value}!runtime\_stats.cpp@{runtime\_stats.cpp}}
+\doxysubsubsection{\texorpdfstring{runtime\_stats\_timer\_get\_value()}{runtime\_stats\_timer\_get\_value()}}
+{\footnotesize\ttfamily \label{runtime__stats_8cpp_a3710ccdeaa915ed39c999d7d53506ad2} 
+uint32\+\_\+t runtime\+\_\+stats\+\_\+timer\+\_\+get\+\_\+value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current value of the high-\/resolution runtime timer. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t The current high-\/resolution timer tick count. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is intended to be mapped directly to the Free\+RTOS macro {\ttfamily port\+GET\+\_\+\+RUN\+\_\+\+TIME\+\_\+\+COUNTER\+\_\+\+VALUE()}. 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00014}{start\+\_\+micros}}.
+
+\Hypertarget{runtime__stats_8cpp_a407d701f7ae7e9321cdee7325f147f4e}\index{runtime\_stats.cpp@{runtime\_stats.cpp}!runtime\_stats\_timer\_init@{runtime\_stats\_timer\_init}}
+\index{runtime\_stats\_timer\_init@{runtime\_stats\_timer\_init}!runtime\_stats.cpp@{runtime\_stats.cpp}}
+\doxysubsubsection{\texorpdfstring{runtime\_stats\_timer\_init()}{runtime\_stats\_timer\_init()}}
+{\footnotesize\ttfamily \label{runtime__stats_8cpp_a407d701f7ae7e9321cdee7325f147f4e} 
+void runtime\+\_\+stats\+\_\+timer\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Configures the high-\/resolution hardware timer for tracking CPU time. 
+
+\begin{DoxyNote}{Note}
+This function is intended to be mapped directly to the Free\+RTOS macro {\ttfamily port\+CONFIGURE\+\_\+\+TIMER\+\_\+\+FOR\+\_\+\+RUN\+\_\+\+TIME\+\_\+\+STATS()}. 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00014}{start\+\_\+micros}}.
+
+
+
+\label{runtime__stats_8cpp_doc-var-members}
+\Hypertarget{runtime__stats_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{runtime__stats_8cpp_ad1413ebea188a9f87348f273570f6e9e}\index{runtime\_stats.cpp@{runtime\_stats.cpp}!start\_micros@{start\_micros}}
+\index{start\_micros@{start\_micros}!runtime\_stats.cpp@{runtime\_stats.cpp}}
+\doxysubsubsection{\texorpdfstring{start\_micros}{start\_micros}}
+{\footnotesize\ttfamily \label{runtime__stats_8cpp_ad1413ebea188a9f87348f273570f6e9e} 
+uint32\+\_\+t start\+\_\+micros = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00014}{14}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00020}{runtime\+\_\+stats\+\_\+timer\+\_\+get\+\_\+value()}}, and \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00016}{runtime\+\_\+stats\+\_\+timer\+\_\+init()}}.
+
+\Hypertarget{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d}\index{runtime\_stats.cpp@{runtime\_stats.cpp}!stats\_buffer@{stats\_buffer}}
+\index{stats\_buffer@{stats\_buffer}!runtime\_stats.cpp@{runtime\_stats.cpp}}
+\doxysubsubsection{\texorpdfstring{stats\_buffer}{stats\_buffer}}
+{\footnotesize\ttfamily \label{runtime__stats_8cpp_a2edeb26d0bc36e35ab275ab470339e2d} 
+char stats\+\_\+buffer\+[2048]\+\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{runtime__stats_8cpp_source}{runtime\+\_\+stats.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{runtime__stats_8cpp_source_l00035}{runtime\+\_\+stats\+\_\+task()}}.
+
