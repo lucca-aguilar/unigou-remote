@@ -45,4 +45,5 @@ To build and run this project, you will need the following tools installed on yo
 ## Documentation
 
 The source code is heavily documented using Doxygen. To generate HTML documentation:
-3. Open `html/index.html` file in your web browser to navigate the project's modules, classes, and function references.
+
+Open `html/index.html` file in your web browser to navigate the project's modules, classes, and function references.
