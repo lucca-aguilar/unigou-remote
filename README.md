@@ -1,0 +1,48 @@
+# UNIGOU Remote: Performance Analysis & Profiling Suite
+
+This repository contains a C++ performance analysis and profiling suite developed during the UNIGOU Remote 2026 academic program at INCBAC, under the supervision of Professor Josef Strnadel.
+
+The project is designed to monitor, log, and analyze system performance metrics, featuring modules for memory tracking, task execution tracing, and runtime statistics. It also includes Python-based dashboards for external data visualization.
+
+## Features
+
+* Memory Monitor: Tracks memory allocation and usage to identify potential bottlenecks or memory leaks.
+* Task Tracer: Monitors the lifecycle and execution flow of tasks, making it ideal for asynchronous routines or RTOS environments.
+* Runtime Statistics: Collects performance metrics and calculates the time spent in various code segments.
+* Structured Logging: A robust logger to record system events and debug messages clearly.
+* Visualization Dashboards: Python scripts to process the collected data and generate interactive graphical representations.
+
+## Project Structure
+
+The repository is built using the PlatformIO ecosystem. 
+
+```text
+├── include/              # Header files (.h)
+│   ├── logger.h          # Logging module definitions
+│   ├── mem_monitor.h     # Memory monitoring definitions
+│   ├── runtime_stats.h   # Runtime statistics definitions
+│   └── task_tracer.h     # Task tracing definitions
+├── src/                  # Source files (.cpp)
+│   ├── logger.cpp        # Logging implementation
+│   ├── main.cpp          # Main application entry point
+│   ├── mem_monitor.cpp   # Memory monitor implementation
+│   ├── runtime_stats.cpp # Runtime statistics implementation
+│   └── task_tracer.cpp   # Task tracer implementation
+├── scripts/              # Python visualization scripts
+│   ├── mem_dashboard.py  # Memory consumption dashboard
+│   └── tracer_dashboard.py # Task execution timeline dashboard
+├── platformio.ini        # PlatformIO configuration file
+└── Doxyfile              # Doxygen configuration for documentation
+```
+
+## Prerequisites
+
+To build and run this project, you will need the following tools installed on your machine:
+
+1.  **[PlatformIO](https://platformio.org/)**: Recommended to be used as a VS Code extension for building and flashing the C++ code.
+2.  **[Python 3.x](https://www.python.org/)**: Required to run the visualization scripts. You may also need to install specific Python libraries (e.g., `matplotlib`, `pandas`).
+
+## Documentation
+
+The source code is heavily documented using Doxygen. To generate HTML documentation:
+3. Open `html/index.html` file in your web browser to navigate the project's modules, classes, and function references.
