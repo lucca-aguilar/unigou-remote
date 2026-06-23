@@ -57,6 +57,4 @@ To collect metrics and visualize the dashboards, follow the process below:
 
 ## Documentation
 
-The source code is heavily documented using Doxygen. To generate HTML documentation:
-
-Open `html/index.html` file in your web browser to navigate the project's modules, classes, and function references.
+The source code is heavily documented using Doxygen. Open `html/index.html` file in your web browser to navigate the project's modules, classes, and function references.
